@@ -23,8 +23,8 @@ const NewsCard = ({ image, title, source, author, navigation, newsData }) => {
                 />
                 <View style={{ margin: 10 }}>
                     <Text style={styles.title} numberOfLines={2}>{title}</Text>
-                    <Text style={styles.source}>Source: {source}</Text>
-                    <Text style={styles.author} numberOfLines={1}>Author: {author ?? 'Not defined'}</Text>
+                    <Text style={styles.source}>Source: {source ?? 'Not Available'}</Text>
+                    <Text style={styles.author} numberOfLines={1}>Author: {author ?? 'Not Available'}</Text>
                 </View>
             </View>
         </TouchableOpacity>
