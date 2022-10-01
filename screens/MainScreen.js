@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import {
+    View,
+    Text,
     StatusBar,
-    FlatList,
+    Pressable,
     StyleSheet,
     SafeAreaView,
-    ActivityIndicator,
+    ScrollView,
 } from 'react-native';
+import FastImage from 'react-native-fast-image';
+import CategoriesCard from '../components/CategoriesCard';
 import Header from '../components/Header';
 import NewsCard from '../components/NewsCard';
+import COLORS from '../constants/Colors';
 import getNewsArticlesByCategory from '../utils/services';
 
 class MainScreen extends Component {
@@ -44,25 +49,15 @@ class MainScreen extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
-                <Header header="General" />
-                {
-                    isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
-                        <FlatList
-                            data={data}
-                            showsVerticalScrollIndicator={false}
-                            renderItem={
-                                ({ item }) => <NewsCard
-                                    newsData={item}
-                                    title={item.title}
-                                    author={item.author}
-                                    image={item.urlToImage}
-                                    source={item.source.name}
-                                    navigation={this.props.navigation}
-                                />
-                            }
-                        />
-                    )
-                }
+                <ScrollView>
+                    <View style={styles.header}>
+                        <Text style={styles.general}> General</Text>
+                        <Pressable hitSlop={20} onPress={() => console.log('search clicked')}>
+                            <FastImage source={require('../assets/icons/search.png')} style={styles.icon} />
+                        </Pressable>
+                    </View>
+                    <CategoriesCard />
+                </ScrollView>
             </SafeAreaView>
         )
     }
@@ -73,6 +68,23 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingBottom: 80,
         backgroundColor: '#fff'
+    },
+    header: {
+        padding: 20,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    general: {
+        fontSize: 25,
+        letterSpacing: 1,
+        color: 'black',
+        fontFamily: 'Poppins-Bold'
+    },
+    icon: {
+        height: 25,
+        width: 25,
+        marginRight: 10
     }
 })
 
