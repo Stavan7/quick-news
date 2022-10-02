@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import {
     Text,
-    Image,
     StyleSheet,
 } from 'react-native';
 import Health from '../screens/Health';
 import Sports from '../screens/Sports';
-import MainScreen from '../screens/MainScreen';
-import Entertainment from '../screens/Entertainment';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import COLORS from '../constants/Colors';
 import Technology from '../screens/Technology';
+import MainScreen from '../screens/MainScreen';
+import Entertainment from '../screens/Entertainment';
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,11 +35,10 @@ class BottomTabs extends Component {
                         tabBarLabel: 'Home',
                         tabBarIcon: ({ focused }) => (
                             <>
-                                <Image
-                                    source={require('../assets/icons/Home.png')}
-                                    resizeMode={'contain'}
-                                    style={styles.icon}
-                                    tintColor={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
+                                <AntDesign
+                                    name="home"
+                                    size={25}
+                                    color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
                             </>
@@ -48,14 +50,13 @@ class BottomTabs extends Component {
                     name="Technology"
                     component={Technology}
                     options={{
-                        tabBarLabel: 'Business',
+                        tabBarLabel: 'Technology',
                         tabBarIcon: ({ focused }) => (
                             <>
-                                <Image
-                                    source={require('../assets/icons/Technology.png')}
-                                    resizeMode={'contain'}
-                                    style={styles.icon}
-                                    tintColor={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
+                                <FontAwesome5
+                                    name="battle-net"
+                                    size={25}
+                                    color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
                             </>
@@ -64,8 +65,6 @@ class BottomTabs extends Component {
                     }}
                 />
 
-
-
                 <Tab.Screen
                     name="Health"
                     component={Health}
@@ -73,11 +72,10 @@ class BottomTabs extends Component {
                         tabBarLabel: 'Health',
                         tabBarIcon: ({ focused }) => (
                             <>
-                                <Image
-                                    source={require('../assets/icons/Health.png')}
-                                    resizeMode={'contain'}
-                                    style={styles.icon}
-                                    tintColor={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
+                                <MaterialCommunityIcons
+                                    size={25}
+                                    name="hand-heart-outline"
+                                    color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
                             </>
@@ -92,16 +90,14 @@ class BottomTabs extends Component {
                         tabBarLabel: 'Sports',
                         tabBarIcon: ({ focused }) => (
                             <>
-                                <Image
-                                    source={require('../assets/icons/Sports.png')}
-                                    resizeMode={'contain'}
-                                    style={styles.icon}
-                                    tintColor={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
+                                <Ionicons
+                                    size={25}
+                                    name="football-outline"
+                                    color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
                             </>
                         )
-
                     }}
                 />
 
@@ -112,19 +108,16 @@ class BottomTabs extends Component {
                         tabBarLabel: 'Entertainment',
                         tabBarIcon: ({ focused }) => (
                             <>
-                                <Image
-                                    source={require('../assets/icons/Entertainment.png')}
-                                    resizeMode={'contain'}
-                                    style={styles.icon}
-                                    tintColor={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
+                                <MaterialCommunityIcons
+                                    size={25}
+                                    name="movie-open-outline"
+                                    color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
                             </>
                         )
                     }}
                 />
-
-
             </Tab.Navigator>
         )
     }
