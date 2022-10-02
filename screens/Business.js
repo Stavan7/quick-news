@@ -44,7 +44,7 @@ class Business extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
-                <Header header="Sports" />
+                <Header header="Business" />
                 {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList
@@ -71,7 +71,6 @@ class Business extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingBottom: 80,
         backgroundColor: '#fff'
     }
 })

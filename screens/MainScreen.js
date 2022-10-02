@@ -56,7 +56,7 @@ class MainScreen extends Component {
                             <FastImage source={require('../assets/icons/search.png')} style={styles.icon} />
                         </Pressable>
                     </View>
-                    <CategoriesCard />
+                    <CategoriesCard navigation={this.props.navigation} />
                 </ScrollView>
             </SafeAreaView>
         )

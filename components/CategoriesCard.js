@@ -5,21 +5,34 @@ import {
     ScrollView,
     StyleSheet,
     SafeAreaView,
+    TouchableOpacity
 } from 'react-native'
 import COLORS from '../constants/Colors';
 import FastImage from 'react-native-fast-image';
 import { categoriesData } from '../categoriesData';
 
-class CategoriesCard extends Component {
-    render() {
-        return (
-            <SafeAreaView>
-                <Text style={styles.header}>Top Headlines</Text>
-                <ScrollView showsHorizontalScrollIndicator={false} horizontal style={{ marginLeft: 10 }}>
-                    {
-                        categoriesData.map((item, index) => {
-                            return (
-                                <View style={styles.container} key={index}>
+const CategoriesCard = ({ navigation }) => {
+
+    const handleRouteName = index => {
+        index === 0 ? navigation.navigate('Sports') :
+            index === 1 ? navigation.navigate('Technology') :
+                index === 2 ? navigation.navigate('Health') :
+                    index === 3 ? navigation.navigate('NoBottomTab', { screen: 'Business' }) :
+                        index === 4 ? navigation.navigate('NoBottomTab', { screen: 'Science' }) :
+                            index === 5 ? navigation.navigate('Entertainment')
+                                : null;
+    };
+
+    return (
+        <SafeAreaView>
+            <Text style={styles.header}>Top Headlines</Text>
+            <ScrollView showsHorizontalScrollIndicator={false} horizontal style={{ marginLeft: 10 }}>
+                {
+                    categoriesData.map((item, index) => {
+                        return (
+                            <TouchableOpacity key={index} activeOpacity={0.7} onPress={() => handleRouteName(index)}>
+
+                                <View style={styles.container} >
                                     <FastImage
                                         resizeMode='cover'
                                         source={item.image}
@@ -31,15 +44,14 @@ class CategoriesCard extends Component {
                                         <Text style={styles.tag}>{item.tag}</Text>
                                     </View>
                                 </View>
-                            )
-                        })
-                    }
 
-                </ScrollView>
-
-            </SafeAreaView>
-        )
-    }
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+            </ScrollView>
+        </SafeAreaView>
+    )
 }
 
 const styles = StyleSheet.create({

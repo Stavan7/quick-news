@@ -44,7 +44,7 @@ class Science extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
-                <Header header="Sports" />
+                <Header header="Science" />
                 {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList
@@ -71,7 +71,6 @@ class Science extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingBottom: 80,
         backgroundColor: '#fff'
     }
 })
