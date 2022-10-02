@@ -10,7 +10,11 @@ import FastImage from 'react-native-fast-image';
 const NewsCard = ({ image, title, source, author, navigation, newsData }) => {
     return (
         <TouchableOpacity activeOpacity={0.8}
-            onPress={() => navigation.navigate('DetailsScreen', { data: newsData })}>
+            onPress={() => navigation.navigate('NoBottomTab', {
+                screen: "DetailsScreen",
+                params: { newsData }
+            })}>
+
             <View style={styles.dataContainer}>
                 <FastImage
                     source={{

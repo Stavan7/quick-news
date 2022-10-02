@@ -1,6 +1,6 @@
 import React from 'react'
 import BottomTabs from './BottomTabs';
-import DetailScreen from '../screens/DetailScreen'
+import NoBottomTabs from './NoBottomTabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
@@ -14,8 +14,8 @@ const Routes = () => {
                 options={{ headerShown: false }}
             />
             <Stack.Screen
-                name="DetailsScreen"
-                component={DetailScreen}
+                name="NoBottomTab"
+                component={NoBottomTabs}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>

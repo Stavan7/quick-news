@@ -45,7 +45,7 @@ class MainScreen extends Component {
     }
 
     render() {
-        const { data, isLoading } = this.state;
+
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
@@ -77,8 +77,9 @@ const styles = StyleSheet.create({
     },
     general: {
         fontSize: 25,
-        letterSpacing: 1,
         color: 'black',
+        marginLeft: -8,
+        letterSpacing: 1,
         fontFamily: 'Poppins-Bold'
     },
     icon: {

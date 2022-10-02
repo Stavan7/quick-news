@@ -45,14 +45,14 @@ class BottomTabs extends Component {
                 />
 
                 <Tab.Screen
-                    name="Entertainment"
-                    component={Entertainment}
+                    name="Technology"
+                    component={Technology}
                     options={{
-                        tabBarLabel: 'Entertainment',
+                        tabBarLabel: 'Business',
                         tabBarIcon: ({ focused }) => (
                             <>
                                 <Image
-                                    source={require('../assets/icons/Entertainment.png')}
+                                    source={require('../assets/icons/Technology.png')}
                                     resizeMode={'contain'}
                                     style={styles.icon}
                                     tintColor={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
@@ -60,8 +60,11 @@ class BottomTabs extends Component {
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
                             </>
                         )
+
                     }}
                 />
+
+
 
                 <Tab.Screen
                     name="Health"
@@ -103,14 +106,14 @@ class BottomTabs extends Component {
                 />
 
                 <Tab.Screen
-                    name="Technology"
-                    component={Technology}
+                    name="Entertainment"
+                    component={Entertainment}
                     options={{
-                        tabBarLabel: 'Business',
+                        tabBarLabel: 'Entertainment',
                         tabBarIcon: ({ focused }) => (
                             <>
                                 <Image
-                                    source={require('../assets/icons/Technology.png')}
+                                    source={require('../assets/icons/Entertainment.png')}
                                     resizeMode={'contain'}
                                     style={styles.icon}
                                     tintColor={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
@@ -118,9 +121,10 @@ class BottomTabs extends Component {
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
                             </>
                         )
-
                     }}
                 />
+
+
             </Tab.Navigator>
         )
     }
