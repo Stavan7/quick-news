@@ -2,32 +2,32 @@ export const everythingsData = [
 
     {
         id: 1,
-        tag: 'Sports',
-        image: require('../assets/icons/sports-card.jpg'),
+        tag: 'Israel',
+        image: require('../assets/discover/Israel.png'),
     },
     {
         id: 2,
-        tag: 'Tech',
-        image: require('../assets/icons/technology-card.jpg'),
+        tag: 'Politics',
+        image: require('../assets/discover/whitehouse.jpg'),
     },
     {
         id: 3,
-        tag: 'Health',
-        image: require('../assets/icons/health-card.jpg'),
+        tag: 'Finance',
+        image: require('../assets/discover/finance.jpeg'),
     },
     {
         id: 4,
-        tag: 'Business',
-        image: require('../assets/icons/business-card.jpg'),
+        tag: 'Education',
+        image: require('../assets/discover/education.jpg'),
     },
     {
         id: 5,
-        tag: 'Science',
-        image: require('../assets/icons/science-card.jpg'),
+        tag: 'Gaming',
+        image: require('../assets/discover/gaming.jpg'),
     },
     {
         id: 6,
-        tag: 'Entertainment',
-        image: require('../assets/icons/Entertainment-card.jpg'),
+        tag: 'Food',
+        image: require('../assets/discover/food.jpg'),
     }
 ]

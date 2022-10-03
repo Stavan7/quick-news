@@ -14,22 +14,22 @@ import { everythingsData } from '../data/everythingsData';
 const Discover = ({ navigation }) => {
 
     const handleRouteName = index => {
-        index === 0 ? navigation.navigate('Sports') :
-            index === 1 ? navigation.navigate('Technology') :
-                index === 2 ? navigation.navigate('Health') :
-                    index === 3 ? navigation.navigate('NoBottomTab', { screen: 'Business' }) :
-                        index === 4 ? navigation.navigate('NoBottomTab', { screen: 'Science' }) :
-                            index === 5 ? navigation.navigate('Entertainment')
+        index === 1 ? navigation.navigate('NoBottomTab', { screen: 'Israel' }) :
+            index === 2 ? navigation.navigate('NoBottomTab', { screen: 'Politics' }) :
+                index === 3 ? navigation.navigate('NoBottomTab', { screen: 'Finance' }) :
+                    index === 4 ? navigation.navigate('NoBottomTab', { screen: 'Education' }) :
+                        index === 5 ? navigation.navigate('NoBottomTab', { screen: 'Gaming' }) :
+                            index === 6 ? navigation.navigate('NoBottomTab', { screen: 'Food' })
                                 : null;
     };
 
-    const Card = ({ item }) => {
+    const Card = ({ item, index }) => {
         return (
             <TouchableOpacity
                 key={item.id}
                 activeOpacity={0.7}
                 style={styles.box}
-            //onPress={() => handleRouteName(index)}
+                onPress={() => handleRouteName(index)}
             >
                 <FastImage
                     resizeMode='cover'
@@ -54,7 +54,7 @@ const Discover = ({ navigation }) => {
                 keyExtractor={item => item.id}
                 showsVerticalScrollIndicator={false}
                 columnWrapperStyle={styles.columnWrapper}
-                renderItem={({ item }) => <Card item={item} />}
+                renderItem={({ item }) => <Card item={item} index={item.id} />}
             />
         </SafeAreaView>
     )
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         width: 'auto',
         height: '100%',
         borderRadius: 10,
-        opacity: 0.7
+        opacity: 0.5
     },
     tagView: {
         position: "absolute",
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     },
     tag: {
         color: 'black',
-        fontSize: 20,
-        fontFamily: 'Poppins-Bold'
+        fontSize: 22,
+        fontFamily: 'NotoSans-ExtraBold'
     }
 })
 
