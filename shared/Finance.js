@@ -43,8 +43,8 @@ class Finance extends Component {
         const { data, isLoading } = this.state;
         return (
             <SafeAreaView style={styles.container}>
-                <StatusBar backgroundColor={'black'} navigation={this.props.navigation} BackBtn />
-                <Header header="Finance" />
+                <StatusBar backgroundColor={'black'} />
+                <Header header="Finance" navigation={this.props.navigation} BackBtn />
                 {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList
