@@ -3,13 +3,28 @@ import {
     Text,
     View,
     StyleSheet,
+    TouchableOpacity
 } from 'react-native'
 import COLORS from '../constants/Colors';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
-const Header = ({ header }) => {
+const Header = ({ header, BackBtn, navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.headerText}>{header}</Text>
+            <View style={styles.bakcBtnContainer}>
+                {
+                    BackBtn ?
+                        <Ionicons
+                            size={25}
+                            color="white"
+                            name="ios-chevron-back-sharp"
+                            onPress={() => navigation.goBack()}
+                        />
+                        : null
+                }
+            </View>
         </View>
     )
 }
@@ -30,6 +45,10 @@ const styles = StyleSheet.create({
         letterSpacing: 1,
         fontFamily: 'NotoSans-Bold',
         color: COLORS.unFocusedIcon
+    },
+    bakcBtnContainer: {
+        left: 14,
+        position: 'absolute',
     },
 })
 

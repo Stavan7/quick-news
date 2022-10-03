@@ -44,7 +44,7 @@ class Politics extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
-                <Header header="Politics" />
+                <Header navigation={this.props.navigation} header="Politics" BackBtn />
                 {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList

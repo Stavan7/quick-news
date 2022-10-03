@@ -12,6 +12,7 @@ import FastImage from 'react-native-fast-image';
 import CategoriesCard from '../components/CategoriesCard';
 import Discover from '../components/Discover';
 import getNewsArticlesByCategory from '../utils/services';
+import Feather from 'react-native-vector-icons/Feather';
 
 class MainScreen extends Component {
 
@@ -50,9 +51,7 @@ class MainScreen extends Component {
                 <ScrollView>
                     <View style={styles.header}>
                         <Text style={styles.general}> General</Text>
-                        <Pressable hitSlop={20} onPress={() => console.log('search clicked')}>
-                            <FastImage source={require('../assets/icons/search.png')} style={styles.icon} />
-                        </Pressable>
+                        <Feather name="search" size={28} color="black" style={styles.iconsContainer} />
                     </View>
                     <CategoriesCard navigation={this.props.navigation} />
                     <Discover navigation={this.props.navigation} />
@@ -85,6 +84,14 @@ const styles = StyleSheet.create({
         height: 25,
         width: 25,
         marginRight: 10
+    },
+    iconsContainer: {
+        height: 35,
+        width: 35,
+        borderRadius: 50,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        backgroundColor: 'white',
     }
 })
 

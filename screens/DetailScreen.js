@@ -13,6 +13,8 @@ import {
 import moment from 'moment';
 import COLORS from '../constants/Colors';
 import FastImage from 'react-native-fast-image';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const HEIGHT = Dimensions.get('window').height;
 
@@ -28,22 +30,19 @@ const DetailScreen = ({ route, navigation }) => {
             <ScrollView>
                 <View style={{ height: HEIGHT / 2.3, }}>
                     <FastImage source={{ uri: data.newsData.urlToImage ?? 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.houseandgarden.co.uk%2Fphotos%2F618942d70a583de660124c63%2F3%3A4%2Fw_1803%2Ch_2404%2Cc_limit%2Fbuckingham.jpg&imgrefurl=https%3A%2F%2Fwww.houseandgarden.co.uk%2Fgallery%2Fbuckingham-palace-interiors&tbnid=x5nz_1I4lwHwXM&vet=12ahUKEwjpg8nep736AhUKidgFHewgDKwQMygIegUIARDzAQ..i&docid=0XSRP8jMmeQQYM&w=1803&h=2404&q=buckingham%20palace&ved=2ahUKEwjpg8nep736AhUKidgFHewgDKwQMygIegUIARDzAQ' }} style={styles.image} />
-
-                    <Pressable style={styles.iconContainer} onPress={() => navigation.goBack()}>
-                        <FastImage
-                            source={require('../assets/icons/back-arrow.png')}
-                            style={styles.icon}
-                            resizeMode={"contain"}
-                        />
-                    </Pressable>
-                    <Pressable style={styles.shareContainer}>
-                        <FastImage
-                            source={require('../assets/icons/share.png')}
-                            tintColor="white"
-                            style={styles.icon}
-                            resizeMode={"contain"}
-                        />
-                    </Pressable>
+                    <Ionicons
+                        size={25}
+                        color="white"
+                        name="ios-chevron-back-sharp"
+                        style={styles.iconContainer}
+                        onPress={() => navigation.goBack()}
+                    />
+                    <EvilIcons
+                        size={28}
+                        color="white"
+                        name="share-apple"
+                        style={styles.shareContainer}
+                    />
                 </View>
 
                 <View style={styles.textContainer}>
@@ -133,9 +132,9 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
         borderRadius: 30,
-        alignItems: 'center',
         backgroundColor: 'black',
-        justifyContent: 'center',
+        textAlign: 'center',
+        textAlignVertical: 'center'
     },
     iconContainer: {
         position: 'absolute',
@@ -144,9 +143,9 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
         borderRadius: 30,
-        alignItems: 'center',
+        textAlign: 'center',
+        textAlignVertical: 'center',
         backgroundColor: 'black',
-        justifyContent: 'center',
     },
     icon: {
         height: 25,

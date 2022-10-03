@@ -43,7 +43,7 @@ class Business extends Component {
         const { data, isLoading } = this.state;
         return (
             <SafeAreaView style={styles.container}>
-                <StatusBar backgroundColor={'black'} />
+                <StatusBar backgroundColor={'black'} navigation={this.props.navigation} BackBtn />
                 <Header header="Business" />
                 {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (

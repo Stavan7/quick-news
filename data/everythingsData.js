@@ -1,5 +1,4 @@
 export const everythingsData = [
-
     {
         id: 1,
         tag: 'Israel',

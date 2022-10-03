@@ -44,7 +44,7 @@ class Science extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
-                <Header header="Science" />
+                <Header header="Science" navigation={this.props.navigation} BackBtn />
                 {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList
