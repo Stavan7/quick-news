@@ -2,17 +2,16 @@ import React, { Component } from 'react'
 import {
     View,
     Text,
+    LogBox,
     StatusBar,
-    Pressable,
     StyleSheet,
-    SafeAreaView,
     ScrollView,
+    SafeAreaView,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
-import CategoriesCard from '../components/CategoriesCard';
 import Discover from '../components/Discover';
-import getNewsArticlesByCategory from '../utils/services';
 import Feather from 'react-native-vector-icons/Feather';
+import CategoriesCard from '../components/CategoriesCard';
+import getNewsArticlesByCategory from '../utils/services';
 
 class MainScreen extends Component {
 
@@ -40,7 +39,8 @@ class MainScreen extends Component {
     }
 
     componentDidMount() {
-        this.getNews()
+        this.getNews();
+        LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     }
 
     render() {
