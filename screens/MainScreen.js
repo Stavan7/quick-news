@@ -10,9 +10,7 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import CategoriesCard from '../components/CategoriesCard';
-import Header from '../components/Header';
-import NewsCard from '../components/NewsCard';
-import COLORS from '../constants/Colors';
+import Discover from '../components/Discover';
 import getNewsArticlesByCategory from '../utils/services';
 
 class MainScreen extends Component {
@@ -57,6 +55,7 @@ class MainScreen extends Component {
                         </Pressable>
                     </View>
                     <CategoriesCard navigation={this.props.navigation} />
+                    <Discover navigation={this.props.navigation} />
                 </ScrollView>
             </SafeAreaView>
         )
