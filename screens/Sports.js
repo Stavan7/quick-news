@@ -49,6 +49,9 @@ class Sports extends Component {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList
                             data={data}
+                            refreshing={isLoading}
+                            progressViewOffset={100}
+                            onRefresh={() => this.getNews()}
                             showsVerticalScrollIndicator={false}
                             renderItem={
                                 ({ item }) => <NewsCard

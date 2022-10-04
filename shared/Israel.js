@@ -26,7 +26,8 @@ class Israel extends Component {
             .then(newsData => {
                 this.setState({
                     data: newsData,
-                    isLoading: false
+                    isLoading: false,
+                    isFetching: false
                 });
             },
                 error => {
@@ -40,7 +41,7 @@ class Israel extends Component {
     }
 
     render() {
-        const { data, isLoading } = this.state;
+        const { data, isLoading, isFetching } = this.state;
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
@@ -49,6 +50,9 @@ class Israel extends Component {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList
                             data={data}
+                            refreshing={isLoading}
+                            progressViewOffset={100}
+                            onRefresh={() => this.getNews()}
                             showsVerticalScrollIndicator={false}
                             renderItem={
                                 ({ item }) => <NewsCard

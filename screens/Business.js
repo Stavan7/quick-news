@@ -43,12 +43,15 @@ class Business extends Component {
         const { data, isLoading } = this.state;
         return (
             <SafeAreaView style={styles.container}>
-                <StatusBar backgroundColor={'black'} navigation={this.props.navigation} BackBtn />
-                <Header header="Business" />
+                <StatusBar backgroundColor={'black'} />
+                <Header header="Business" navigation={this.props.navigation} BackBtn />
                 {
                     isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
                         <FlatList
                             data={data}
+                            refreshing={isLoading}
+                            progressViewOffset={100}
+                            onRefresh={() => this.getNews()}
                             showsVerticalScrollIndicator={false}
                             renderItem={
                                 ({ item }) => <NewsCard
