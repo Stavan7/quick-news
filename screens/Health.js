@@ -5,6 +5,7 @@ import {
     StyleSheet,
     SafeAreaView,
 } from 'react-native';
+import Error from '../components/Error';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
@@ -50,15 +51,15 @@ class Health extends Component {
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
                 <Header header="Health" />
-                <FlatList
-                    data={data}
-                    refreshing={isLoading}
-                    progressViewOffset={100}
-                    onRefresh={() => this.getNews()}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={
-                        ({ item }) =>
-                            <NewsCard
+                {data != undefined ?
+                    <FlatList
+                        data={data}
+                        refreshing={isLoading}
+                        progressViewOffset={100}
+                        onRefresh={() => this.getNews()}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={
+                            ({ item }) => <NewsCard
                                 newsData={item}
                                 title={item.title}
                                 author={item.author}
@@ -66,8 +67,9 @@ class Health extends Component {
                                 source={item.source.name}
                                 navigation={this.props.navigation}
                             />
-                    }
-                />
+                        }
+                    /> : <Error />
+                }
             </SafeAreaView>
         )
     }

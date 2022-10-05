@@ -5,6 +5,7 @@ import {
     StyleSheet,
     SafeAreaView,
 } from 'react-native';
+import Error from '../components/Error';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
@@ -50,23 +51,25 @@ class Business extends Component {
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
                 <Header header="Business" navigation={this.props.navigation} BackBtn />
-                <FlatList
-                    data={data}
-                    refreshing={isLoading}
-                    progressViewOffset={100}
-                    onRefresh={() => this.getNews()}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={
-                        ({ item }) => <NewsCard
-                            newsData={item}
-                            title={item.title}
-                            author={item.author}
-                            image={item.urlToImage}
-                            source={item.source.name}
-                            navigation={this.props.navigation}
-                        />
-                    }
-                />
+                {data != undefined ?
+                    <FlatList
+                        data={data}
+                        refreshing={isLoading}
+                        progressViewOffset={100}
+                        onRefresh={() => this.getNews()}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={
+                            ({ item }) => <NewsCard
+                                newsData={item}
+                                title={item.title}
+                                author={item.author}
+                                image={item.urlToImage}
+                                source={item.source.name}
+                                navigation={this.props.navigation}
+                            />
+                        }
+                    /> : <Error />
+                }
             </SafeAreaView>
         )
     }

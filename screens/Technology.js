@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {
-    Text,
+    View,
     Alert,
     StatusBar,
     FlatList,
     StyleSheet,
     SafeAreaView,
 } from 'react-native';
+import Error from '../components/Error';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
@@ -31,7 +32,6 @@ class Technology extends Component {
                     data: newsData,
                     isLoading: false,
                 });
-                console.log(newsData)
             },
                 error => {
                     Alert.alert('Error', 'Something went wrong!', error);
@@ -71,9 +71,8 @@ class Technology extends Component {
                                 navigation={this.props.navigation}
                             />
                         }
-                    /> : <Text >internet issues</Text>
+                    /> : <Error />
                 }
-
             </SafeAreaView>
         )
     }
