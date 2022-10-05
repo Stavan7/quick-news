@@ -1,14 +1,12 @@
-import { NavigationContainer } from '@react-navigation/native';
 import React, { Component } from 'react'
 import {
     StatusBar,
     FlatList,
     StyleSheet,
     SafeAreaView,
-    ActivityIndicator,
-    TouchableOpacity,
 } from 'react-native';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
 import getNewsArticlesByCategory from '../utils/services';
 
@@ -43,32 +41,33 @@ class Health extends Component {
 
     render() {
         const { data, isLoading } = this.state;
+
+        if (isLoading) {
+            return <Loading />
+        }
+
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
                 <Header header="Health" />
-                {
-                    isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
-                        <FlatList
-                            data={data}
-                            refreshing={isLoading}
-                            progressViewOffset={100}
-                            onRefresh={() => this.getNews()}
-                            showsVerticalScrollIndicator={false}
-                            renderItem={
-                                ({ item }) =>
-                                    <NewsCard
-                                        newsData={item}
-                                        title={item.title}
-                                        author={item.author}
-                                        image={item.urlToImage}
-                                        source={item.source.name}
-                                        navigation={this.props.navigation}
-                                    />
-                            }
-                        />
-                    )
-                }
+                <FlatList
+                    data={data}
+                    refreshing={isLoading}
+                    progressViewOffset={100}
+                    onRefresh={() => this.getNews()}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={
+                        ({ item }) =>
+                            <NewsCard
+                                newsData={item}
+                                title={item.title}
+                                author={item.author}
+                                image={item.urlToImage}
+                                source={item.source.name}
+                                navigation={this.props.navigation}
+                            />
+                    }
+                />
             </SafeAreaView>
         )
     }

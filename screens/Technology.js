@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {
+    Alert,
     StatusBar,
     FlatList,
     StyleSheet,
     SafeAreaView,
-    ActivityIndicator,
 } from 'react-native';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
 import getNewsArticlesByCategory from '../utils/services';
 
@@ -18,6 +19,7 @@ class Technology extends Component {
             data: [],
             error: '',
             isLoading: true,
+            isFetching: false
         }
     }
 
@@ -26,7 +28,7 @@ class Technology extends Component {
             .then(newsData => {
                 this.setState({
                     data: newsData,
-                    isLoading: false
+                    isLoading: false,
                 });
             },
                 error => {
@@ -40,32 +42,36 @@ class Technology extends Component {
     }
 
     render() {
-        const { data, isLoading } = this.state;
+        const { data, isLoading, isFetching } = this.state;
+
+        if (isLoading) {
+            return <Loading />
+        }
+
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
                 <Header header="Technology" />
-                {
-                    isLoading ? <ActivityIndicator size={'large'} style={{ flex: 1 }} /> : (
-                        <FlatList
-                            data={data}
-                            refreshing={isLoading}
-                            progressViewOffset={100}
-                            onRefresh={() => this.getNews()}
-                            showsVerticalScrollIndicator={false}
-                            renderItem={
-                                ({ item }) => <NewsCard
-                                    newsData={item}
-                                    title={item.title}
-                                    author={item.author}
-                                    image={item.urlToImage}
-                                    source={item.source.name}
-                                    navigation={this.props.navigation}
-                                />
-                            }
-                        />
-                    )
+                {data != undefined ?
+                    <FlatList
+                        data={data}
+                        refreshing={isLoading}
+                        progressViewOffset={100}
+                        onRefresh={() => this.getNews()}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={
+                            ({ item }) => <NewsCard
+                                newsData={item}
+                                title={item.title}
+                                author={item.author}
+                                image={item.urlToImage}
+                                source={item.source.name}
+                                navigation={this.props.navigation}
+                            />
+                        }
+                    /> : <Text>Internet issues</Text>
                 }
+
             </SafeAreaView>
         )
     }
