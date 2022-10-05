@@ -9,6 +9,7 @@ import Israel from '../shared/Israel';
 import Politics from '../shared/Politics';
 import Gaming from '../shared/Gaming'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SearchScreen from '../screens/SearchScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -59,6 +60,11 @@ const NoBottomTabs = () => {
             <Stack.Screen
                 name="Gaming"
                 component={Gaming}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="SearchScreen"
+                component={SearchScreen}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>

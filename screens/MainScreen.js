@@ -51,7 +51,13 @@ class MainScreen extends Component {
                 <ScrollView>
                     <View style={styles.header}>
                         <Text style={styles.general}> General</Text>
-                        <Feather name="search" size={28} color="black" style={styles.iconsContainer} />
+                        <Feather
+                            size={25}
+                            name="search"
+                            color="black"
+                            style={{ marginLeft: 10 }}
+                            onPress={() => this.props.navigation.navigate('NoBottomTab', { screen: 'SearchScreen' })}
+                        />
                     </View>
                     <CategoriesCard navigation={this.props.navigation} />
                     <Discover navigation={this.props.navigation} />
