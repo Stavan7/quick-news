@@ -2,13 +2,12 @@ import React from 'react';
 import {
     View,
     Text,
-    Image,
+    Share,
+    Linking,
     Dimensions,
     ScrollView,
     StyleSheet,
     SafeAreaView,
-    Linking,
-    Pressable,
 } from 'react-native';
 import moment from 'moment';
 import COLORS from '../constants/Colors';
@@ -24,6 +23,27 @@ const DetailScreen = ({ route, navigation }) => {
 
     const pubishedTime = data.publishedAt;
     const time = moment(pubishedTime).format("ll");
+
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message: data.newsData.title,
+                url: data.newsData.url,
+                title: `Read this article by :${data.newsData.author ?? data.newsData.source.name}`
+            });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    console.log(result.action)
+                } else {
+                    console.log(result.action)
+                }
+            } else if (result.action === Share.dismissedAction) {
+                console.log(result.action)
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -41,6 +61,7 @@ const DetailScreen = ({ route, navigation }) => {
                         size={28}
                         color="white"
                         name="share-apple"
+                        onPress={onShare}
                         style={styles.shareContainer}
                     />
                 </View>
