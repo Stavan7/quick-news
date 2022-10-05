@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 16,
         marginLeft: 10,
+        color: 'black',
         fontFamily: 'Poppins-Regular'
     }
 })

@@ -27,9 +27,7 @@ const DetailScreen = ({ route, navigation }) => {
     const onShare = async () => {
         try {
             const result = await Share.share({
-                message: data.newsData.title,
-                url: data.newsData.url,
-                title: `Read this article by :${data.newsData.author ?? data.newsData.source.name}`
+                message: `Read this article: ${data.newsData.url}`,
             });
             if (result.action === Share.sharedAction) {
                 if (result.activityType) {
