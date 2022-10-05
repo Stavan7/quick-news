@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {
+    Text,
     Alert,
     StatusBar,
     FlatList,
@@ -30,6 +31,7 @@ class Technology extends Component {
                     data: newsData,
                     isLoading: false,
                 });
+                console.log(newsData)
             },
                 error => {
                     Alert.alert('Error', 'Something went wrong!', error);
@@ -69,7 +71,7 @@ class Technology extends Component {
                                 navigation={this.props.navigation}
                             />
                         }
-                    /> : <Text>Internet issues</Text>
+                    /> : <Text >internet issues</Text>
                 }
 
             </SafeAreaView>
