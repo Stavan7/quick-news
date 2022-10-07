@@ -56,10 +56,10 @@ Run the app on Ios emulator
 ```
 ## Screenshots
 
-![](https://github.com/Stavan7/quick-news/blob/main/screenshots/HomeScreen.png)
-![](https://github.com/Stavan7/quick-news/blob/main/screenshots/DiscoverPage.png)
-![](https://github.com/Stavan7/quick-news/blob/main/screenshots/HealthTab.png)
-![](https://github.com/Stavan7/quick-news/blob/main/screenshots/SearchResults.png)
+![Home Screen](https://github.com/Stavan7/quick-news/blob/main/screenshots/HomeScreen.png)
+![Discover](https://github.com/Stavan7/quick-news/blob/main/screenshots/DiscoverPage.png)
+![Health ](https://github.com/Stavan7/quick-news/blob/main/screenshots/HealthTab.png)
+![Search Results](https://github.com/Stavan7/quick-news/blob/main/screenshots/SearchResults.png)
 
 
 
