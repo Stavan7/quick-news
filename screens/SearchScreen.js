@@ -13,6 +13,7 @@ import NewsCard from '../components/NewsCard';
 import getNewsArticles from '../utils/everything';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Error from '../components/Error';
 
 class SearchScreen extends Component {
 
@@ -22,6 +23,8 @@ class SearchScreen extends Component {
             data: [],
             error: '',
             query: '',
+            alert: false,
+            serverIssues: false,
             isLoading: true,
         }
     }
@@ -29,22 +32,38 @@ class SearchScreen extends Component {
     async getNews() {
         getNewsArticles(this.state.query)
             .then(newsData => {
-                this.setState({
-                    data: newsData,
-                    isLoading: false,
-                    query: ''
-                });
-                console.log(newsData)
+                if (newsData != null) {
+                    this.setState({
+                        data: newsData,
+                        isLoading: false,
+                    });
+                } else {
+                    this.setState({
+                        isLoading: false,
+                        serverIssues: true,
+                        error: 'Server Side Error, \n Please Try Again In An Hour'
+                    })
+                }
             },
                 error => {
-                    Alert.alert('Error', 'Something went wrong!', error);
+                    this.setState({
+                        alert: true,
+                        isLoading: false
+                    });
+                    this.setErrorMessage(error);
                 }
             )
     }
 
+
     componentDidMount() {
         this.getNews()
     }
+
+    setErrorMessage(err) {
+        this.setState({ error: err.message });
+    }
+
 
     render() {
 
@@ -89,6 +108,16 @@ class SearchScreen extends Component {
                         />
                     }
                 />
+
+                {
+                    this.state.alert &&
+                    <Error errorText={`Please check your internet connection ${'\n'}${this.state.error}`} />
+                }
+
+                {
+                    this.state.serverIssues &&
+                    <Error errorText={this.state.error} />
+                }
 
             </SafeAreaView>
         )

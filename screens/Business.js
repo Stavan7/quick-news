@@ -18,22 +18,41 @@ class Business extends Component {
         this.state = {
             data: [],
             error: '',
+            alert: false,
             isLoading: true,
+            isFetching: false,
+            serverIssues: false,
         }
     }
 
     async getNews() {
         getNewsArticlesByCategory('Business')
             .then(newsData => {
-                this.setState({
-                    data: newsData,
-                    isLoading: false
-                });
+                if (newsData != null) {
+                    this.setState({
+                        data: newsData,
+                        isLoading: false,
+                    });
+                } else {
+                    this.setState({
+                        isLoading: false,
+                        serverIssues: true,
+                        error: '\n Server Side Error, \n Please Try Again In An Hour'
+                    })
+                }
             },
                 error => {
-                    Alert.alert('Error', 'Something went wrong!', error);
+                    this.setState({
+                        alert: true,
+                        isLoading: false
+                    });
+                    this.setErrorMessage(error);
                 }
             )
+    }
+
+    setErrorMessage(err) {
+        this.setState({ error: err.message });
     }
 
     componentDidMount() {
@@ -46,31 +65,39 @@ class Business extends Component {
         if (isLoading) {
             return <Loading />
         }
-
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
-                <Header header="Business" navigation={this.props.navigation} BackBtn />
-                {data != undefined ?
-                    <FlatList
-                        data={data}
-                        refreshing={isLoading}
-                        progressViewOffset={100}
-                        onRefresh={() => this.getNews()}
-                        showsVerticalScrollIndicator={false}
-                        renderItem={
-                            ({ item }) => <NewsCard
-                                newsData={item}
-                                title={item.title}
-                                author={item.author}
-                                image={item.urlToImage}
-                                source={item.source.name}
-                                navigation={this.props.navigation}
-                            />
-                        }
-                    /> : <Error />
+                <Header header="Business" BackBtn navigation={this.props.navigation} />
+                <FlatList
+                    data={data}
+                    refreshing={isLoading}
+                    progressViewOffset={100}
+                    onRefresh={() => this.getNews()}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={
+                        ({ item }) => <NewsCard
+                            newsData={item}
+                            title={item.title}
+                            author={item.author}
+                            image={item.urlToImage}
+                            source={item.source.name}
+                            navigation={this.props.navigation}
+                        />
+                    }
+                />
+
+                {
+                    this.state.alert &&
+                    <Error errorText={`Please check your internet connection ${'\n'}${this.state.error}`} />
                 }
-            </SafeAreaView>
+
+                {
+                    this.state.serverIssues &&
+                    <Error errorText={this.state.error} />
+                }
+
+            </SafeAreaView >
         )
     }
 }
@@ -78,6 +105,7 @@ class Business extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingBottom: 80,
         backgroundColor: '#fff'
     }
 })

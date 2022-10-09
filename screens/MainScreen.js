@@ -33,7 +33,7 @@ class MainScreen extends Component {
                 });
             },
                 error => {
-                    Alert.alert('Error', 'Something went wrong!', error);
+                    console.log('Error', 'Something went wrong!', error);
                 }
             )
     }
