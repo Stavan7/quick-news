@@ -47,7 +47,22 @@ const DetailScreen = ({ route, navigation }) => {
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <View style={{ height: HEIGHT / 2.3, }}>
-                    <FastImage source={{ uri: data.newsData.urlToImage ?? 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.houseandgarden.co.uk%2Fphotos%2F618942d70a583de660124c63%2F3%3A4%2Fw_1803%2Ch_2404%2Cc_limit%2Fbuckingham.jpg&imgrefurl=https%3A%2F%2Fwww.houseandgarden.co.uk%2Fgallery%2Fbuckingham-palace-interiors&tbnid=x5nz_1I4lwHwXM&vet=12ahUKEwjpg8nep736AhUKidgFHewgDKwQMygIegUIARDzAQ..i&docid=0XSRP8jMmeQQYM&w=1803&h=2404&q=buckingham%20palace&ved=2ahUKEwjpg8nep736AhUKidgFHewgDKwQMygIegUIARDzAQ' }} style={styles.image} />
+                    {
+                        data.newsData.urlToImage !== null ? (
+                            <FastImage
+                                ksource={{ uri: data.newsData.urlToImage }}
+                                style={styles.image}
+                                alt="Alternate Text"
+                                resizeMode={"cover"}
+                            />
+                        ) :
+                            <FastImage
+                                source={require('../assets/discover/noImage.jpg')}
+                                style={styles.image}
+                                alt="Alternate Text"
+                                resizeMode={"cover"}
+                            />
+                    }
                     <Ionicons
                         size={25}
                         color="white"
@@ -102,7 +117,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 16,
         color: 'black',
-        fontFamily: 'NotoSans-Bold'
+        fontFamily: 'Poppins-SemiBold'
     },
     time: {
         fontSize: 14,
@@ -112,7 +127,7 @@ const styles = StyleSheet.create({
     },
     content: {
         fontSize: 16,
-        color: 'black',
+        color: '#1e1e1e',
         marginTop: 10,
         textAlign: 'left',
         fontFamily: 'NotoSans-Regular'

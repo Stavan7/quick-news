@@ -33,6 +33,7 @@ class Technology extends Component {
                         data: newsData,
                         isLoading: false,
                     });
+                    console.log(newsData)
                 } else {
                     this.setState({
                         isLoading: false,
