@@ -2,14 +2,34 @@ import React from 'react';
 import {
     Text,
     View,
+    Share,
     StyleSheet,
     TouchableOpacity
-} from 'react-native'
+} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-const dummyImg = 'https://www.google.co.in/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Fpremium-vector%2F404-found-internet-information-concept-glitch-style-white-background-trendy-glitched-vector-illustration_549897-1168.jpg%3Fw%3D2000&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Fvectors%2Fno-data-found&tbnid=q_3KFwYQuPbeDM&vet=12ahUKEwiwp7K2ydv6AhVfi9gFHaPFCoQQMyhkegUIARDOAQ..i&docid=zShRaUhr1zcCHM&w=2000&h=1286&q=no%20image%20ailable%20illustration&hl=en&ved=2ahUKEwiwp7K2ydv6AhVfi9gFHaPFCoQQMyhkegUIARDOAQ'
+const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => {
 
-const NewsCard = ({ image, title, source, author, navigation, newsData }) => {
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message: `Read this article: ${url}`,
+            });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    console.log(result.action)
+                } else {
+                    console.log(result.action)
+                }
+            } else if (result.action === Share.dismissedAction) {
+                console.log(result.action)
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+
     return (
         <TouchableOpacity activeOpacity={0.8}
             onPress={() => navigation.navigate('NoBottomTab', {
@@ -34,11 +54,22 @@ const NewsCard = ({ image, title, source, author, navigation, newsData }) => {
                             resizeMode={"cover"}
                         />
                 }
-                <View style={{ margin: 10 }}>
-                    <Text style={styles.title} numberOfLines={2}>{title}</Text>
-                    <Text style={styles.source}>Source: {source ?? 'Not Available'}</Text>
-                    <Text style={styles.author} numberOfLines={1}>Author: {author ?? 'Not Available'}</Text>
+                <Text style={styles.title} numberOfLines={1}>{title}</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginTop: 5 }}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.source}>Source: {source ?? 'Not Available'}</Text>
+                        <Text style={styles.time}>{time}</Text>
+                    </View>
+                    <EvilIcons
+                        name="share-google"
+                        size={28}
+                        color={'black'}
+                        onPress={onShare}
+                        style={{ marginRight: 15 }}
+                    />
                 </View>
+
+
             </View>
         </TouchableOpacity>
     )
@@ -64,7 +95,7 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     image: {
-        height: '65%',
+        height: '73%',
         width: '100%',
         borderTopRightRadius: 10,
         borderTopLeftRadius: 10,
@@ -72,20 +103,20 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 14,
         color: 'black',
+        margin: 10,
         fontFamily: 'Poppins-SemiBold'
     },
     source: {
-        fontSize: 12,
-        color: 'black',
-        marginTop: 5,
-        fontFamily: 'Poppins-Medium'
+        fontSize: 13,
+        color: '#0a0908',
+        fontFamily: 'Poppins-Regular'
     },
-    author: {
-        fontSize: 12,
-        color: 'black',
-        marginTop: 3,
-        fontFamily: 'Poppins-Medium'
+    time: {
+        fontSize: 13,
+        color: '#0a0908',
+        marginLeft: 10,
+        fontFamily: 'Poppins-Regular'
     }
 })
 
-export default NewsCard;
+export default NewsCard; 

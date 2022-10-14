@@ -20,9 +20,7 @@ const HEIGHT = Dimensions.get('window').height;
 const DetailScreen = ({ route, navigation }) => {
 
     const data = route.params;
-
-    const pubishedTime = data.publishedAt;
-    const time = moment(pubishedTime).format("ll");
+    console.log(data)
 
     const onShare = async () => {
         try {
@@ -81,7 +79,7 @@ const DetailScreen = ({ route, navigation }) => {
 
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>{data.newsData.title}</Text>
-                    <Text style={styles.time}>Published : {time}</Text>
+                    <Text style={styles.time}>Published : {moment(data.newsData.publishedAt).format('LLL')}</Text>
 
                     <Text style={styles.content}>{data.newsData.content ?? data.newsData.description}</Text>
                     <Text style={styles.urlText}>To read full news, checkout :</Text>
@@ -187,4 +185,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DetailScreen
+export default DetailScreen 

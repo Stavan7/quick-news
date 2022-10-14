@@ -5,6 +5,7 @@ import {
     StyleSheet,
     SafeAreaView,
 } from 'react-native';
+import moment from 'moment';
 import Error from '../components/Error';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
@@ -77,12 +78,14 @@ class Health extends Component {
                     showsVerticalScrollIndicator={false}
                     renderItem={
                         ({ item }) => <NewsCard
+                            url={item.url}
                             newsData={item}
                             title={item.title}
                             author={item.author}
                             image={item.urlToImage}
                             source={item.source.name}
                             navigation={this.props.navigation}
+                            time={moment(item.publishedAt).format('LT')}
                         />
                     }
                 />
