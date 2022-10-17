@@ -19,8 +19,12 @@ const HEIGHT = Dimensions.get('window').height;
 
 const DetailScreen = ({ route, navigation }) => {
 
-    const data = route.params;
-    console.log(data)
+    const data = route.params.newsData;
+    // console.log(data);
+
+    const image = data.urlToImage
+    console.log(image)
+
 
     const onShare = async () => {
         try {
@@ -46,14 +50,14 @@ const DetailScreen = ({ route, navigation }) => {
             <ScrollView>
                 <View style={{ height: HEIGHT / 2.3, }}>
                     {
-                        data.newsData.urlToImage !== null ? (
+                        image !== null ?
                             <FastImage
-                                ksource={{ uri: data.newsData.urlToImage }}
+                                source={{ uri: image }}
                                 style={styles.image}
                                 alt="Alternate Text"
                                 resizeMode={"cover"}
                             />
-                        ) :
+                            :
                             <FastImage
                                 source={require('../assets/discover/noImage.jpg')}
                                 style={styles.image}
@@ -78,15 +82,15 @@ const DetailScreen = ({ route, navigation }) => {
                 </View>
 
                 <View style={styles.textContainer}>
-                    <Text style={styles.title}>{data.newsData.title}</Text>
-                    <Text style={styles.time}>Published : {moment(data.newsData.publishedAt).format('LLL')}</Text>
+                    <Text style={styles.title}>{data.title}</Text>
+                    <Text style={styles.time}>Published : {moment(data.publishedAt).format('LLL')}</Text>
 
-                    <Text style={styles.content}>{data.newsData.content ?? data.newsData.description}</Text>
+                    <Text style={styles.content}>{data.content ?? data.description}</Text>
                     <Text style={styles.urlText}>To read full news, checkout :</Text>
-                    <Text style={styles.url} onPress={() => Linking.openURL(data.newsData.url)}>{data.newsData.url}</Text>
+                    <Text style={styles.url} onPress={() => Linking.openURL(data.url)}>{data.url}</Text>
 
-                    <Text style={styles.authorText}>Author: {data.newsData.author ?? 'Not Available'}</Text>
-                    <Text style={styles.source}>Source: {data.newsData.source.name ?? 'Not Available'}</Text>
+                    <Text style={styles.authorText}>Author: {data.author ?? 'Not Available'}</Text>
+                    <Text style={styles.source}>Source: {data.source.name ?? 'Not Available'}</Text>
                 </View>
 
             </ScrollView>
