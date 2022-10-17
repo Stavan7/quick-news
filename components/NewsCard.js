@@ -55,9 +55,9 @@ const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => 
                         />
                 }
                 <Text style={styles.title} numberOfLines={1}>{title}</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginTop: 5 }}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles.source}>Source: {source ?? 'Not Available'}</Text>
+                <View style={styles.bottomContainer}>
+                    <View flexDirection='row'>
+                        <Text style={styles.source}>Source : {source ?? 'Not Available'}</Text>
                         <Text style={styles.time}>{time}</Text>
                     </View>
                     <EvilIcons
@@ -68,7 +68,6 @@ const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => 
                         style={{ marginRight: 15 }}
                     />
                 </View>
-
 
             </View>
         </TouchableOpacity>
@@ -105,6 +104,12 @@ const styles = StyleSheet.create({
         color: 'black',
         margin: 10,
         fontFamily: 'Poppins-SemiBold'
+    },
+    bottomContainer: {
+        marginTop: 5,
+        flexDirection: 'row',
+        marginHorizontal: 10,
+        justifyContent: 'space-between',
     },
     source: {
         fontSize: 13,
