@@ -6,9 +6,10 @@ import {
     StyleSheet,
     SafeAreaView,
     TouchableOpacity
-} from 'react-native'
+} from 'react-native';
 import COLORS from '../constants/Colors';
 import FastImage from 'react-native-fast-image';
+import { Icon } from 'react-native-elements';
 import { categoriesData } from '../data/categoriesData';
 
 const CategoriesCard = ({ navigation }) => {
@@ -35,7 +36,12 @@ const CategoriesCard = ({ navigation }) => {
                     />
                     <Text style={styles.cardTitle}>{item.subTitle}</Text>
                     <View style={styles.btmContainer}>
-                        <FastImage source={item.icon} style={styles.icon} />
+                        <Icon
+                            size={16}
+                            type={item.type}
+                            name={item.icon}
+                            color={COLORS.focusedIcon}
+                        />
                         <Text style={styles.tag}>{item.tag}</Text>
                     </View>
                 </View>
@@ -76,7 +82,7 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         color: 'black',
-        fontSize: 12,
+        fontSize: 12.6,
         marginTop: 5,
         marginLeft: 5,
         fontFamily: 'Poppins-Regular'
@@ -86,15 +92,10 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-start',
-    },
-    icon: {
-        height: 16,
-        width: 16,
     },
     tag: {
         color: 'black',
-        fontSize: 13,
+        fontSize: 12,
         marginLeft: 5,
         fontFamily: 'Poppins-Regular'
     }

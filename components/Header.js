@@ -7,7 +7,6 @@ import {
 } from 'react-native'
 import COLORS from '../constants/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const Header = ({ header, BackBtn, navigation }) => {
     return (

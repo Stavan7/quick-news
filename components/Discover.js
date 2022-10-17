@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     tag: {
-        color: 'black',
+        color: COLORS.screenBg,
         fontSize: 22,
         fontFamily: 'NotoSans-ExtraBold'
     }
