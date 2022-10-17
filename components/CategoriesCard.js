@@ -33,6 +33,7 @@ const CategoriesCard = ({ navigation }) => {
                         resizeMode='cover'
                         source={item.image}
                         style={styles.image}
+                        priority={FastImage.priority.normal}
                     />
                     <Text style={styles.cardTitle}>{item.subTitle}</Text>
                     <View style={styles.btmContainer}>

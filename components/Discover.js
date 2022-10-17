@@ -35,6 +35,7 @@ const Discover = ({ navigation }) => {
                     resizeMode='cover'
                     source={item.image}
                     style={styles.image}
+                    priority={FastImage.priority.normal}
                 />
                 <View style={styles.tagView}>
                     <Text style={styles.tag}>{item.tag}</Text>

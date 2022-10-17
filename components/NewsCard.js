@@ -41,7 +41,11 @@ const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => 
                 {
                     image !== null ? (
                         <FastImage
-                            source={{ uri: image }}
+                            source={{
+                                uri: image,
+                                priority: FastImage.priority.normal,
+                                cache: FastImage.cacheControl.web 
+                            }}
                             style={styles.image}
                             alt="Alternate Text"
                             resizeMode={"cover"}
