@@ -74,6 +74,9 @@ class Health extends Component {
                     data={data}
                     refreshing={isLoading}
                     progressViewOffset={100}
+                    initialNumToRender={8}
+                    maxToRenderPerBatch={8}
+                    removeClippedSubviews={true}
                     onRefresh={() => this.getNews()}
                     showsVerticalScrollIndicator={false}
                     renderItem={

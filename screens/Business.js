@@ -74,6 +74,9 @@ class Business extends Component {
                     data={data}
                     refreshing={isLoading}
                     progressViewOffset={100}
+                    initialNumToRender={8}
+                    maxToRenderPerBatch={8}
+                    removeClippedSubviews={true}
                     onRefresh={() => this.getNews()}
                     showsVerticalScrollIndicator={false}
                     renderItem={
@@ -109,7 +112,6 @@ class Business extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingBottom: 80,
         backgroundColor: '#fff'
     }
 })

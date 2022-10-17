@@ -80,6 +80,9 @@ class SearchScreen extends Component {
                 </View>
                 <FlatList
                     data={this.state.data}
+                    initialNumToRender={8}
+                    maxToRenderPerBatch={8}
+                    removeClippedSubviews={true}
                     showsVerticalScrollIndicator={false}
                     renderItem={
                         ({ item }) => <NewsCard
