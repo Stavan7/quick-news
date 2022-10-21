@@ -37,7 +37,7 @@ class BottomTabs extends Component {
                             <>
                                 <AntDesign
                                     name="home"
-                                    size={25}
+                                    size={23}
                                     color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
@@ -55,7 +55,7 @@ class BottomTabs extends Component {
                             <>
                                 <FontAwesome5
                                     name="battle-net"
-                                    size={25}
+                                    size={23}
                                     color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
                                 {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
@@ -73,7 +73,7 @@ class BottomTabs extends Component {
                         tabBarIcon: ({ focused }) => (
                             <>
                                 <MaterialCommunityIcons
-                                    size={25}
+                                    size={23}
                                     name="hand-heart-outline"
                                     color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
@@ -91,7 +91,7 @@ class BottomTabs extends Component {
                         tabBarIcon: ({ focused }) => (
                             <>
                                 <Ionicons
-                                    size={25}
+                                    size={23}
                                     name="football-outline"
                                     color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
@@ -109,7 +109,7 @@ class BottomTabs extends Component {
                         tabBarIcon: ({ focused }) => (
                             <>
                                 <MaterialCommunityIcons
-                                    size={25}
+                                    size={23}
                                     name="movie-open-outline"
                                     color={focused ? COLORS.focusedIcon : COLORS.unFocusedIcon}
                                 />
@@ -128,10 +128,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         ...Platform.select({
             ios: {
-                height: 90,
+                height: 80,
             },
             android: {
-                height: 70,
+                height: 62,
             },
         }),
         backgroundColor: COLORS.bottomTabBg,

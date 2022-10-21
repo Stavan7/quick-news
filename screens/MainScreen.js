@@ -50,11 +50,11 @@ class MainScreen extends Component {
                 <StatusBar backgroundColor={'black'} />
                 <ScrollView>
                     <View style={styles.header}>
-                        <Text style={styles.general}> General</Text>
+                        <Text style={styles.general}>General</Text>
                         <Feather
                             size={25}
                             name="search"
-                            color="black"
+                            color="white"
                             style={{ marginLeft: 10 }}
                             onPress={() => this.props.navigation.navigate('NoBottomTab', { screen: 'SearchScreen' })}
                         />
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingBottom: 80,
-        backgroundColor: '#fff'
+        backgroundColor: '#1b1b1b'
     },
     header: {
         padding: 20,
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     general: {
-        fontSize: 25,
-        color: 'black',
-        marginLeft: -8,
+        fontSize: 23,
+        color: 'white',
+        marginLeft: -3,
         letterSpacing: 1,
         fontFamily: 'Poppins-Bold'
     },

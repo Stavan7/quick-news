@@ -63,10 +63,10 @@ const Discover = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     header: {
-        fontSize: 20,
-        marginTop: 20,
+        fontSize: 18,
+        marginTop: 25,
         marginHorizontal: 20,
-        color: COLORS.bottomTabBg,
+        color: COLORS.focusedIcon,
         fontFamily: 'Poppins-SemiBold',
     },
     columnWrapper: {
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     tag: {
-        color: COLORS.screenBg,
+        color: 'white',
         fontSize: 22,
         fontFamily: 'NotoSans-ExtraBold'
     }

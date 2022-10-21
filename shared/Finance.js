@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
 import getNewsArticles from '../utils/everything';
+import COLORS from '../constants/Colors';
 
 class Finance extends Component {
 
@@ -111,7 +112,7 @@ class Finance extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: COLORS.screenBg
     }
 })
 

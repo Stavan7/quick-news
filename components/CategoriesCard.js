@@ -46,7 +46,6 @@ const CategoriesCard = ({ navigation }) => {
                         <Text style={styles.tag}>{item.tag}</Text>
                     </View>
                 </View>
-
             </TouchableOpacity>
         )
     }
@@ -67,7 +66,7 @@ const CategoriesCard = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     header: {
-        fontSize: 14,
+        fontSize: 18,
         color: COLORS.focusedIcon,
         fontFamily: 'Poppins-SemiBold',
     },
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     cardTitle: {
-        color: 'black',
+        color: 'white',
         fontSize: 12.6,
         marginTop: 5,
         marginLeft: 5,
@@ -95,9 +94,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     tag: {
-        color: 'black',
+        color: 'white',
         fontSize: 12,
-        marginLeft: 5,
+        marginLeft: 8,
         fontFamily: 'Poppins-Regular'
     }
 })

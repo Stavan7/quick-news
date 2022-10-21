@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import Error from '../components/Error';
+import COLORS from '../constants/Colors';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingBottom: 80,
-        backgroundColor: '#fff'
+        backgroundColor: COLORS.screenBg
     }
 })
 

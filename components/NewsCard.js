@@ -44,7 +44,7 @@ const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => 
                             source={{
                                 uri: image,
                                 priority: FastImage.priority.normal,
-                                cache: FastImage.cacheControl.web 
+                                cache: FastImage.cacheControl.web
                             }}
                             style={styles.image}
                             alt="Alternate Text"
@@ -67,7 +67,7 @@ const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => 
                     <EvilIcons
                         name="share-google"
                         size={28}
-                        color={'black'}
+                        color={'white'}
                         onPress={onShare}
                         style={{ marginRight: 15 }}
                     />
@@ -85,16 +85,15 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginHorizontal: 20,
         height: 320,
-        backgroundColor: '#fff',
+        backgroundColor: '#191919',
 
-        shadowColor: '#000',
+        shadowColor: '#121212',
         shadowOffset: {
             width: 0,
             height: 5,
         },
         shadowOpacity: 0.34,
         shadowRadius: 6.27,
-
         elevation: 10,
     },
     image: {
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 14,
-        color: 'black',
+        color: 'white',
         margin: 10,
         fontFamily: 'Poppins-SemiBold'
     },
@@ -117,12 +116,12 @@ const styles = StyleSheet.create({
     },
     source: {
         fontSize: 13,
-        color: '#0a0908',
+        color: '#fff',
         fontFamily: 'Poppins-Regular'
     },
     time: {
         fontSize: 13,
-        color: '#0a0908',
+        color: '#fff',
         marginLeft: 10,
         fontFamily: 'Poppins-Regular'
     }

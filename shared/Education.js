@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import NewsCard from '../components/NewsCard';
 import getNewsArticles from '../utils/everything';
+import COLORS from '../constants/Colors';
 
 class Education extends Component {
 
@@ -102,8 +103,7 @@ class Education extends Component {
           this.state.serverIssues &&
           <Error errorText={this.state.error} />
         }
-
-      </SafeAreaView >
+      </SafeAreaView>
     )
   }
 }
@@ -111,7 +111,7 @@ class Education extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: COLORS.screenBg
   }
 })
 

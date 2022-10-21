@@ -12,6 +12,7 @@ import NewsCard from '../components/NewsCard';
 import getNewsArticles from '../utils/everything';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
+import COLORS from '../constants/Colors';
 
 class SearchScreen extends Component {
 
@@ -57,7 +58,7 @@ class SearchScreen extends Component {
                 <Entypo
                     size={35}
                     name="cross"
-                    color="black"
+                    color="white"
                     style={{ margin: 20 }}
                     onPress={() => this.props.navigation.goBack()}
                 />
@@ -66,13 +67,13 @@ class SearchScreen extends Component {
                     <Feather
                         size={25}
                         name="search"
-                        color="black"
+                        color="white"
                         style={{ marginLeft: 10 }}
                     />
                     <TextInput
                         defaultValue={this.state.query}
                         style={styles.input}
-                        placeholderTextColor="black"
+                        placeholderTextColor="white"
                         placeholder="Search Articles..."
                         onChangeText={(text) => this.setState({ query: text })}
                         onSubmitEditing={() => this.getNews()}
@@ -103,30 +104,31 @@ class SearchScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: COLORS.screenBg
     },
     general: {
         fontSize: 25,
-        color: 'black',
+        color: 'white',
         marginLeft: 20,
         letterSpacing: 1,
         fontFamily: 'Poppins-Bold'
     },
     searchContainer: {
         flexDirection: 'row',
-        borderWidth: 1,
         height: 50,
         width: '90%',
         alignSelf: 'center',
         borderRadius: 10,
         alignItems: 'center',
         marginVertical: 10,
+        borderWidth: 1,
+        borderColor: 'white'
     },
     input: {
         flex: 1,
         fontSize: 16,
         marginLeft: 10,
-        color: 'black',
+        color: 'white',
         fontFamily: 'Poppins-Regular'
     }
 })

@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         width: WIDTH,
         height: HEIGHT,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: COLORS.screenBg
     },
     lottie: {
         width: 350,
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
         marginTop: -70
     },
     header: {
-        color: 'black',
+        color: 'white',
         fontFamily: 'Poppins-SemiBold',
         fontSize: 28,
         textAlign: 'center',
