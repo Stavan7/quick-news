@@ -116,31 +116,31 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         marginTop: -30,
-        backgroundColor: 'white',
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
+        backgroundColor: COLORS.screenBg,
     },
     title: {
         fontSize: 16,
-        color: 'black',
+        color: 'white',
         fontFamily: 'Poppins-SemiBold'
     },
     time: {
         fontSize: 14,
-        color: 'black',
+        color: 'white',
         marginTop: 10,
         fontFamily: 'NotoSans-SemiBold'
     },
     content: {
         fontSize: 16,
-        color: '#1e1e1e',
+        color: '#fff',
         marginTop: 10,
         textAlign: 'left',
         fontFamily: 'NotoSans-Regular'
     },
     urlText: {
         fontSize: 16,
-        color: 'black',
+        color: 'white',
         marginTop: 10,
         textAlign: 'left',
         fontFamily: 'NotoSans-Regular'
@@ -155,13 +155,13 @@ const styles = StyleSheet.create({
     authorText: {
         flex: 1,
         fontSize: 14,
-        color: 'black',
+        color: 'white',
         marginTop: 30,
         fontFamily: 'NotoSans-Regular'
     },
     source: {
         fontSize: 14,
-        color: 'black',
+        color: 'white',
         marginTop: 5,
         fontFamily: 'NotoSans-Regular'
     },
