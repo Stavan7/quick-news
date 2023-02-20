@@ -6,10 +6,11 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
+import moment from 'moment';
 import FastImage from 'react-native-fast-image';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => {
+const NewsCard = ({ data, navigation }) => {
 
     const onShare = async () => {
         try {
@@ -34,15 +35,15 @@ const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => 
         <TouchableOpacity activeOpacity={0.8}
             onPress={() => navigation.navigate('NoBottomTab', {
                 screen: "DetailsScreen",
-                params: { newsData }
+                params: { data }
             })}>
 
             <View style={styles.dataContainer}>
                 {
-                    image !== null ? (
+                    data.urlToImage !== null ? (
                         <FastImage
                             source={{
-                                uri: image,
+                                uri: data.urlToImage,
                                 priority: FastImage.priority.normal,
                                 cache: FastImage.cacheControl.web
                             }}
@@ -58,11 +59,11 @@ const NewsCard = ({ image, title, source, navigation, newsData, time, url }) => 
                             resizeMode={"cover"}
                         />
                 }
-                <Text style={styles.title} numberOfLines={1}>{title}</Text>
+                <Text style={styles.title} numberOfLines={1}>{data.title}</Text>
                 <View style={styles.bottomContainer}>
                     <View flexDirection='row'>
-                        <Text style={styles.source}>Source : {source ?? 'Not Available'}</Text>
-                        <Text style={styles.time}>{time}</Text>
+                        <Text style={styles.source}>Source : {data.source.name ?? 'Not Available'}</Text>
+                        <Text style={styles.time}>{moment(data.publishedAt).format('LT')}</Text>
                     </View>
                     <EvilIcons
                         name="share-google"

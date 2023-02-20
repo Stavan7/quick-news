@@ -19,12 +19,8 @@ const HEIGHT = Dimensions.get('window').height;
 
 const DetailScreen = ({ route, navigation }) => {
 
-    const data = route.params.newsData;
-    // console.log(data);
-
+    const data = route.params.data;
     const image = data.urlToImage
-    console.log(image)
-
 
     const onShare = async () => {
         try {

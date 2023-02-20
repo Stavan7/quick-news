@@ -80,18 +80,7 @@ class Entertainment extends Component {
                     removeClippedSubviews={true}
                     onRefresh={() => this.getNews()}
                     showsVerticalScrollIndicator={false}
-                    renderItem={
-                        ({ item }) => <NewsCard
-                            url={item.url}
-                            newsData={item}
-                            title={item.title}
-                            author={item.author}
-                            image={item.urlToImage}
-                            source={item.source.name}
-                            navigation={this.props.navigation}
-                            time={moment(item.publishedAt).format('LT')}
-                        />
-                    }
+                    renderItem={({ item }) => <NewsCard data={item} navigation={this.props.navigation} />}
                 />
 
                 {
