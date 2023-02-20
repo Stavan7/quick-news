@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
     Text,
     View,
@@ -8,19 +8,27 @@ import {
     TouchableOpacity
 } from 'react-native';
 import COLORS from '../constants/Colors';
-import FastImage from 'react-native-fast-image';
 import { Icon } from 'react-native-elements';
+import FastImage from 'react-native-fast-image';
 import { categoriesData } from '../data/categoriesData';
 
 const CategoriesCard = ({ navigation }) => {
 
+    const nav = name => {
+        navigation.navigate(name)
+    }
+
+    const noBtmNav = name => {
+        navigation.navigate('NoBottomTab', { screen: name })
+    }
+
     const handleRouteName = index => {
-        index === 1 ? navigation.navigate('Sports') :
-            index === 2 ? navigation.navigate('Technology') :
-                index === 3 ? navigation.navigate('Health') :
-                    index === 4 ? navigation.navigate('NoBottomTab', { screen: 'Business' }) :
-                        index === 5 ? navigation.navigate('NoBottomTab', { screen: 'Science' }) :
-                            index === 6 ? navigation.navigate('Entertainment')
+        index === 1 ? nav('Sports') :
+            index === 2 ? nav('Technology') :
+                index === 3 ? nav('Health') :
+                    index === 4 ? noBtmNav('Business') :
+                        index === 5 ? noBtmNav('Science') :
+                            index === 6 ? nav('Entertainment')
                                 : null;
     };
 

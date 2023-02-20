@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
     Text,
     View,
@@ -13,13 +13,17 @@ import { everythingsData } from '../data/everythingsData';
 
 const Discover = ({ navigation }) => {
 
+    const navigating = name => {
+        navigation.navigate('NoBottomTab', { screen: name })
+    }
+
     const handleRouteName = index => {
-        index === 1 ? navigation.navigate('NoBottomTab', { screen: 'Israel' }) :
-            index === 2 ? navigation.navigate('NoBottomTab', { screen: 'Politics' }) :
-                index === 3 ? navigation.navigate('NoBottomTab', { screen: 'Finance' }) :
-                    index === 4 ? navigation.navigate('NoBottomTab', { screen: 'Education' }) :
-                        index === 5 ? navigation.navigate('NoBottomTab', { screen: 'Gaming' }) :
-                            index === 6 ? navigation.navigate('NoBottomTab', { screen: 'Food' })
+        index === 1 ? navigating('Israel') :
+            index === 2 ? navigating('Politics') :
+                index === 3 ? navigating('Finance') :
+                    index === 4 ? navigating('Education') :
+                        index === 5 ? navigating('Gaming') :
+                            index === 6 ? navigating('Food')
                                 : null;
     };
 
