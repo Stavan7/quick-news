@@ -1,9 +1,9 @@
-import { API_KEY, everything_endpoint } from '../config/config';
+import { API_KEY, everything_endpoint, language } from '../config/config';
 
 export default getNewsArticles = async (searchParam) => {
 
     try {
-        const apiData = await fetch(`${everything_endpoint}?q=${searchParam}&sortBy=publishedAt`, {
+        const apiData = await fetch(`${everything_endpoint}?q=${searchParam}&sortBy=publishedAt&language=${language}`, {
             headers: {
                 'X-API-KEY': API_KEY
             },

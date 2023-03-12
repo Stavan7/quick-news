@@ -14,7 +14,7 @@ const Header = ({ header, BackBtn, navigation }) => {
             <Text style={styles.headerText}>{header}</Text>
             <View style={styles.bakcBtnContainer}>
                 {
-                    BackBtn ?
+                    BackBtn === true ?
                         <Ionicons
                             size={25}
                             color="white"
