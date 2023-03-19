@@ -85,16 +85,7 @@ class SearchScreen extends Component {
                     maxToRenderPerBatch={8}
                     removeClippedSubviews={true}
                     showsVerticalScrollIndicator={false}
-                    renderItem={
-                        ({ item }) => <NewsCard
-                            newsData={item}
-                            title={item.title}
-                            author={item.author}
-                            image={item.urlToImage}
-                            source={item.source.name}
-                            navigation={this.props.navigation}
-                        />
-                    }
+                    renderItem={({ item }) => <NewsCard data={item} navigation={this.props.navigation} />}
                 />
             </SafeAreaView>
         )

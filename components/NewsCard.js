@@ -31,6 +31,37 @@ const NewsCard = ({ data, navigation }) => {
         }
     }
 
+    const ImgCheck = () => {
+        if (data.urlToImage !== null) {
+            return (
+                <FastImage
+                    source={{ uri: data.urlToImage }}
+                    style={styles.image}
+                    alt="Alternate Text"
+                    resizeMode={"cover"}
+                />
+            )
+        } else if (data.source.name === 'Google News') {
+            return (
+                <FastImage
+                    source={require('../assets/discover/google-news.png')}
+                    style={styles.image}
+                    alt="Alternate Text"
+                    resizeMode={"cover"}
+                />
+            )
+        } else {
+            return (
+                <FastImage
+                    source={require('../assets/discover/noImage.jpg')}
+                    style={styles.image}
+                    alt="Alternate Text"
+                    resizeMode={"cover"}
+                />
+            )
+        }
+    }
+
     return (
         <TouchableOpacity activeOpacity={0.8}
             onPress={() => navigation.navigate('NoBottomTab', {
@@ -39,26 +70,7 @@ const NewsCard = ({ data, navigation }) => {
             })}>
 
             <View style={styles.dataContainer}>
-                {
-                    data.urlToImage !== null ? (
-                        <FastImage
-                            source={{
-                                uri: data.urlToImage,
-                                priority: FastImage.priority.normal,
-                                cache: FastImage.cacheControl.web
-                            }}
-                            style={styles.image}
-                            alt="Alternate Text"
-                            resizeMode={"cover"}
-                        />
-                    ) :
-                        <FastImage
-                            source={require('../assets/discover/noImage.jpg')}
-                            style={styles.image}
-                            alt="Alternate Text"
-                            resizeMode={"cover"}
-                        />
-                }
+                <ImgCheck />
                 <Text style={styles.title} numberOfLines={1}>{data.title}</Text>
                 <View style={styles.bottomContainer}>
                     <View flexDirection='row'>
@@ -73,7 +85,6 @@ const NewsCard = ({ data, navigation }) => {
                         style={{ marginRight: 15 }}
                     />
                 </View>
-
             </View>
         </TouchableOpacity>
     )
@@ -87,7 +98,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         height: 320,
         backgroundColor: '#191919',
-
         shadowColor: '#121212',
         shadowOffset: {
             width: 0,

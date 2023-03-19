@@ -4,6 +4,7 @@ import PageComponent from '../components/PageComponent';
 class Sports extends Component {
     render() {
         return <PageComponent
+            category
             keyword="Sports"
             paddingBtm={70}
             navigation={this.props.navigation}
