@@ -251,7 +251,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-
+    implementation project(':react-native-splash-screen')
     implementation project(':react-native-vector-icons')
 
     //noinspection GradleDynamicVersion

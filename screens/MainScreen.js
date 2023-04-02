@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import Discover from '../components/Discover';
 import Feather from 'react-native-vector-icons/Feather';
-import CategoriesCard from '../components/CategoriesCard';
 import getNewsArticlesByCategory from '../utils/services';
+import CategoriesCard from '../components/CategoriesCard';
 
 class MainScreen extends Component {
 
