@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
     Text,
     View,
@@ -14,7 +14,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
 import COLORS from '../constants/Colors';
 
-class SearchScreen extends Component {
+class SearchScreen extends PureComponent {
 
     constructor(props) {
         super(props)

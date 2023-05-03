@@ -45,7 +45,7 @@ export const categoriesData = [
         image: require('../assets/icons/Entertainment-card.jpg'),
         icon: 'television-play',
         tag: 'Entertainment',
-        type:'material-community',
+        type: 'material-community',
         subTitle: 'Filmy Gossip'
     }
 ]
