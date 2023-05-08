@@ -8,11 +8,11 @@ import {
     SafeAreaView,
     FlatList,
 } from 'react-native';
-import NewsCard from '../components/NewsCard';
+import COLORS from '../constants/Colors';
 import getNewsArticles from '../utils/everything';
+import NewsCard from '../components/NewsCard';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
-import COLORS from '../constants/Colors';
 
 class SearchScreen extends PureComponent {
 
@@ -44,14 +44,11 @@ class SearchScreen extends PureComponent {
             )
     }
 
-
     componentDidMount() {
         this.getNews()
     }
 
-
-    render() {
-
+    render() { 
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
