@@ -2,104 +2,71 @@ import React from 'react';
 import {
   View,
   Text,
-  Share,
+  Image,
   Linking,
   Dimensions,
   ScrollView,
   StyleSheet,
-  SafeAreaView,
 } from 'react-native';
 import moment from 'moment';
 import COLORS from '../constants/Colors';
-import FastImage from 'react-native-fast-image';
+import share from '../components/NewsShare';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-const HEIGHT = Dimensions.get('window').height;
+const HEIGHT = Dimensions.get('screen').height;
 
-const DetailScreen = ({route, navigation}) => {
+const DetailScreen = ({ route, navigation }) => {
+
   const data = route.params.data;
   const image = data.urlToImage;
 
-  const onShare = async () => {
-    try {
-      const result = await Share.share({
-        message: `Read this article: ${data.url}`,
-      });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          console.log(result.action);
-        } else {
-          console.log(result.action);
-        }
-      } else if (result.action === Share.dismissedAction) {
-        console.log(result.action);
-      }
-    } catch (error) {
-      alert(error.message);
+  const ImgCheck = () => {
+    if (image !== null) {
+      return <Image
+        source={{ uri: image }}
+        style={styles.image}
+      />
+    } else {
+      return <Image
+        style={styles.image}
+        source={require('../assets/discover/noImage.jpg')}
+      />
     }
-  };
+  }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View style={{height: HEIGHT / 2.3}}>
-          {image !== null ? (
-            <FastImage
-              source={{
-                uri: image,
-                priority: FastImage.priority.normal,
-                cache: FastImage.cacheControl.web,
-              }}
-              style={styles.image}
-              alt="Alternate Text"
-              resizeMode={'cover'}
-            />
-          ) : (
-            <FastImage
-              source={require('../assets/discover/noImage.jpg')}
-              style={styles.image}
-              alt="Alternate Text"
-              resizeMode={'cover'}
-            />
-          )}
+    <ScrollView style={styles.container}>
+      <View style={styles.cardContainer}>
+        <View style={styles.imageContainer}>
+          <ImgCheck />
           <Ionicons
             size={25}
             color="white"
             name="ios-chevron-back-sharp"
-            style={styles.iconContainer}
             onPress={() => navigation.goBack()}
+            style={[styles.iconContainer, { left: 20 }]}
           />
           <EvilIcons
             size={28}
             color="white"
             name="share-apple"
-            onPress={onShare}
-            style={styles.shareContainer}
+            onPress={() => share(data.url)}
+            style={[styles.iconContainer, { right: 20 }]}
           />
         </View>
+      </View>
 
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{data.title}</Text>
-          <Text style={styles.time}>
-            Published : {moment(data.publishedAt).format('LLL')}
-          </Text>
-
-          <Text style={styles.content}>{data.content ?? data.description}</Text>
-          <Text style={styles.urlText}>To read full news, checkout :</Text>
-          <Text style={styles.url} onPress={() => Linking.openURL(data.url)}>
-            {data.url}
-          </Text>
-
-          <Text style={styles.authorText}>
-            Author: {data.author ?? 'Not Available'}
-          </Text>
-          <Text style={styles.source}>
-            Source: {data.source.name ?? 'Not Available'}
-          </Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>{data.title}</Text>
+        <Text style={styles.time}>Published : {moment(data.publishedAt).format('LLL')}</Text>
+        <Text style={styles.content}>{data.content ?? data.description}</Text>
+        <Text style={styles.urlText}>To read full news, checkout :</Text>
+        <Text style={styles.url} onPress={() => Linking.openURL(data.url)}>{data.url}</Text>
+        <Text style={styles.authorText}>Author: {data.author ?? 'Not Available'}</Text>
+        <Text style={styles.source}>Source: {data.source.name ?? 'Not Available'}</Text>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -108,18 +75,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.screenBg,
   },
+  cardContainer: {
+    height: HEIGHT / 3,
+    overflow: 'hidden'
+  },
+  imageContainer: {
+    height: '100%',
+    overflow: 'hidden',
+  },
   image: {
     flex: 1,
-    width: '100%',
-    height: 'auto',
+    resizeMode: 'contain',
   },
   textContainer: {
-    flex: 1,
+    flexGrow: 1,
+    marginTop: 20,
     padding: 20,
-    marginTop: -30,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    backgroundColor: COLORS.screenBg,
+    backgroundColor: '#222222'
   },
   title: {
     fontSize: 16,
@@ -157,7 +131,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 14,
     color: 'white',
-    marginTop: 30,
+    marginTop: 10,
     fontFamily: 'NotoSans-Regular',
   },
   source: {
@@ -166,31 +140,15 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontFamily: 'NotoSans-Regular',
   },
-  shareContainer: {
-    position: 'absolute',
-    top: 50,
-    right: 20,
-    height: 40,
-    width: 40,
-    borderRadius: 30,
-    backgroundColor: 'black',
-    textAlign: 'center',
-    textAlignVertical: 'center',
-  },
   iconContainer: {
     position: 'absolute',
-    top: 50,
-    left: 20,
+    top: 30,
     height: 40,
     width: 40,
     borderRadius: 30,
     textAlign: 'center',
     textAlignVertical: 'center',
-    backgroundColor: 'black',
-  },
-  icon: {
-    height: 25,
-    width: 25,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
 });
 

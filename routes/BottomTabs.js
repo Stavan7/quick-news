@@ -25,7 +25,7 @@ class BottomTabs extends Component {
                 screenOptions={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarStyle: { ...styles.shadow },
+                    tabBarStyle: styles.shadow,
                 }}
             >
                 <Tab.Screen
@@ -131,19 +131,19 @@ const styles = StyleSheet.create({
                 height: 80,
             },
             android: {
-                height: 62,
+                height: 53,
             },
         }),
-        backgroundColor: COLORS.bottomTabBg,
+        backfaceVisibility: 'hidden',
         marginHorizontal: 10,
         marginBottom: 10,
         borderRadius: 10,
-        shadowColor: 'black',
-        elevation: 5
+        borderTopWidth: 0,
+        backgroundColor: COLORS.bottomTabBg,
     },
     dot: {
         color: 'white',
-        fontSize: 7,
+        fontSize: 5,
         marginTop: 3,
     },
     icon: {

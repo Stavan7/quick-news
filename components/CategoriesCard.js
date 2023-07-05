@@ -7,10 +7,10 @@ import {
     SafeAreaView,
     TouchableOpacity
 } from 'react-native';
+import { Categories } from '../data/data';
 import COLORS from '../constants/Colors';
 import { Icon } from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
-import { categoriesData } from '../data/categoriesData';
 
 const CategoriesCard = ({ navigation }) => {
 
@@ -35,7 +35,6 @@ const CategoriesCard = ({ navigation }) => {
     const Card = ({ item, index }) => {
         return (
             <TouchableOpacity activeOpacity={0.7} onPress={() => handleRouteName(index)}>
-
                 <View style={styles.container} >
                     <FastImage
                         resizeMode='cover'
@@ -63,7 +62,7 @@ const CategoriesCard = ({ navigation }) => {
             <Text style={styles.header}>Top Headlines</Text>
             <FlatList
                 horizontal={true}
-                data={categoriesData}
+                data={Categories}
                 keyExtractor={item => item.id}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => <Card item={item} index={item.id} />}

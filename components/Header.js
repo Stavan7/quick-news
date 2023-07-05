@@ -3,7 +3,6 @@ import {
     Text,
     View,
     StyleSheet,
-    TouchableOpacity
 } from 'react-native'
 import COLORS from '../constants/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -32,11 +31,11 @@ const styles = StyleSheet.create({
     container: {
         height: 50,
         alignItems: 'center',
-        marginHorizontal: 10,
         marginBottom: 10,
+        marginHorizontal: 10,
+        justifyContent: 'center',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
-        justifyContent: 'center',
         backgroundColor: COLORS.bottomTabBg,
     },
     headerText: {

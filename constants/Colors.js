@@ -1,8 +1,8 @@
 const COLORS = {
     screenBg: '#1b1b1b',
-    bottomTabBg: '#081631',
-    focusedIcon: '#ff0a45',
     unFocusedIcon: '#fff',
+    focusedIcon: '#ff0a45',
+    bottomTabBg: '#081631',
 }
 
 export default COLORS;

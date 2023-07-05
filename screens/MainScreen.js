@@ -40,7 +40,7 @@ class MainScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingBottom: 80,
+        paddingBottom: 70,
         backgroundColor: '#1b1b1b'
     },
 })

@@ -4,8 +4,8 @@ import PageComponent from '../components/PageComponent';
 class Entertainment extends Component {
     render() {
         return <PageComponent
-            keyword="Entertainment"
             paddingBtm={70}
+            keyword="Entertainment"
             navigation={this.props.navigation}
         />
     }

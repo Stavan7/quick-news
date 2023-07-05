@@ -1,55 +1,37 @@
 import React from 'react';
-import {Text, View, Share, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native';
 import moment from 'moment';
-import FastImage from 'react-native-fast-image';
+import share from './NewsShare';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-const NewsCard = ({data, navigation}) => {
-  const onShare = async () => {
-    try {
-      const result = await Share.share({
-        message: `Read this article: ${data.url}`,
-      });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          console.log(result.action);
-        } else {
-          console.log(result.action);
-        }
-      } else if (result.action === Share.dismissedAction) {
-        console.log(result.action);
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+const NewsCard = ({ data, navigation }) => {
 
   const ImgCheck = () => {
     if (data.urlToImage !== null) {
       return (
-        <FastImage
-          source={{uri: data.urlToImage}}
+        <Image
           style={styles.image}
-          alt="Alternate Text"
-          resizeMode={'cover'}
+          source={{ uri: data.urlToImage }}
         />
       );
     } else if (data.source.name === 'Google News') {
       return (
-        <FastImage
-          source={require('../assets/discover/google-news.png')}
+        <Image
           style={styles.image}
-          alt="Alternate Text"
-          resizeMode={'cover'}
+          source={require('../assets/discover/google-news.png')}
         />
       );
     } else {
       return (
-        <FastImage
-          source={require('../assets/discover/noImage.jpg')}
+        <Image
           style={styles.image}
-          alt="Alternate Text"
-          resizeMode={'cover'}
+          source={require('../assets/discover/noImage.jpg')}
         />
       );
     }
@@ -61,29 +43,24 @@ const NewsCard = ({data, navigation}) => {
       onPress={() =>
         navigation.navigate('NoBottomTab', {
           screen: 'DetailsScreen',
-          params: {data},
+          params: { data }
         })
-      }>
-      <View style={styles.dataContainer}>
+      }
+    >
+      <View style={styles.cardContainer}>
         <ImgCheck />
-        <Text style={styles.title} numberOfLines={1}>
-          {data.title}
-        </Text>
+        <Text style={styles.title} numberOfLines={1}>{data.title}</Text>
         <View style={styles.bottomContainer}>
           <View flexDirection="row">
-            <Text style={styles.source}>
-              Source : {data.source.name ?? 'Not Available'}
-            </Text>
-            <Text style={styles.time}>
-              {moment(data.publishedAt).format('LT')}
-            </Text>
+            <Text style={styles.source}>Source: {data.source.name ?? 'Not Available'}</Text>
+            <Text style={styles.time}>{moment(data.publishedAt).format('LT')}</Text>
           </View>
           <EvilIcons
             name="share-google"
             size={28}
-            color={'white'}
-            onPress={onShare}
-            style={{marginRight: 15}}
+            color="white"
+            onPress={() => share(data.url)}
+            style={{ marginRight: 15 }}
           />
         </View>
       </View>
@@ -92,26 +69,18 @@ const NewsCard = ({data, navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  dataContainer: {
+  cardContainer: {
+    overflow: 'hidden',
     borderRadius: 10,
     marginBottom: 20,
     marginHorizontal: 20,
-    height: 320,
-    backgroundColor: '#191919',
-    shadowColor: '#121212',
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 10,
   },
+
   image: {
-    height: '73%',
+    flex: 1,
     width: '100%',
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
+    aspectRatio: 16 / 9,
+    resizeMode: 'cover',
   },
   title: {
     fontSize: 14,

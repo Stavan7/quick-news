@@ -5,11 +5,12 @@ class Science extends Component {
     render() {
         return <PageComponent
             category
-            keyword="Science"
             headerBtn={true}
+            keyword="Science"
             navigation={this.props.navigation}
         />
     }
 }
+
 
 export default Science; 

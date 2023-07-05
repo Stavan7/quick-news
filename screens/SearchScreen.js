@@ -2,14 +2,15 @@ import React, { PureComponent } from 'react'
 import {
     Text,
     View,
+    Image,
+    FlatList,
     TextInput,
     StatusBar,
     StyleSheet,
     SafeAreaView,
-    FlatList,
 } from 'react-native';
 import COLORS from '../constants/Colors';
-import getNewsArticles from '../utils/everything';
+import { getGlobalNews } from '../utils/api';
 import NewsCard from '../components/NewsCard';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -27,7 +28,7 @@ class SearchScreen extends PureComponent {
     }
 
     async getNews() {
-        getNewsArticles(this.state.query)
+        getGlobalNews(this.state.query)
             .then(newsData => {
                 this.setState({
                     data: newsData,
@@ -48,14 +49,15 @@ class SearchScreen extends PureComponent {
         this.getNews()
     }
 
-    render() { 
+    render() {
+        const { data, query } = this.state;
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={'black'} />
                 <Entypo
                     size={35}
-                    name="cross"
                     color="white"
+                    name="cross"
                     style={{ margin: 20 }}
                     onPress={() => this.props.navigation.goBack()}
                 />
@@ -63,27 +65,40 @@ class SearchScreen extends PureComponent {
                 <View style={styles.searchContainer}>
                     <Feather
                         size={25}
-                        name="search"
                         color="white"
+                        name="search"
                         style={{ marginLeft: 10 }}
                     />
                     <TextInput
-                        defaultValue={this.state.query}
                         style={styles.input}
+                        defaultValue={query}
                         placeholderTextColor="white"
                         placeholder="Search Articles..."
-                        onChangeText={(text) => this.setState({ query: text })}
                         onSubmitEditing={() => this.getNews()}
+                        onChangeText={(text) => this.setState({ query: text })}
                     />
                 </View>
-                <FlatList
-                    data={this.state.data}
-                    initialNumToRender={8}
-                    maxToRenderPerBatch={8}
-                    removeClippedSubviews={true}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <NewsCard data={item} navigation={this.props.navigation} />}
-                />
+                {
+                    !data ? (
+                        <View style={styles.imageContainer}>
+                            <Image
+                                source={require('../assets/discover/Search.png')}
+                                style={styles.searchImage}
+                            />
+                        </View>
+                    ) : (
+                        <FlatList
+                            data={data}
+                            initialNumToRender={8}
+                            maxToRenderPerBatch={8}
+                            removeClippedSubviews={true}
+                            showsVerticalScrollIndicator={false}
+                            renderItem={({ item }) => (
+                                <NewsCard data={item} navigation={this.props.navigation} />
+                            )}
+                        />
+                    )
+                }
             </SafeAreaView>
         )
     }
@@ -118,7 +133,16 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         color: 'white',
         fontFamily: 'Poppins-Regular'
-    }
+    },
+    imageContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    searchImage: {
+        width: 260,
+        height: 300,
+    },
 })
 
 export default SearchScreen;

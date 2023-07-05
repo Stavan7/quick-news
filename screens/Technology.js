@@ -12,4 +12,5 @@ class Technology extends Component {
     }
 }
 
+
 export default Technology; 

@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-const Routes = () => {
+const AppNavigator = () => {
     return (
         <Stack.Navigator initialRouteName='BottomTab' screenOptions={{ headerShown: false }}>
             <Stack.Screen
@@ -22,4 +22,4 @@ const Routes = () => {
     )
 }
 
-export default Routes
+export default AppNavigator

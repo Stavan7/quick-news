@@ -5,11 +5,12 @@ class Business extends Component {
     render() {
         return <PageComponent
             category
-            keyword="Business"
             headerBtn={true}
+            keyword="Business"
             navigation={this.props.navigation}
         />
     }
 }
+
 
 export default Business; 

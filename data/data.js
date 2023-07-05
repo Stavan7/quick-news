@@ -1,5 +1,4 @@
-export const categoriesData = [
-
+export const Categories = [
     {
         id: 1,
         image: require('../assets/icons/sports-card.jpg'),
@@ -47,5 +46,38 @@ export const categoriesData = [
         tag: 'Entertainment',
         type: 'material-community',
         subTitle: 'Filmy Gossip'
+    }
+]
+
+export const DiscoverList = [
+    {
+        id: 1,
+        tag: 'Israel',
+        image: require('../assets/discover/Israel.png'),
+    },
+    {
+        id: 2,
+        tag: 'Politics',
+        image: require('../assets/discover/whitehouse.jpg'),
+    },
+    {
+        id: 3,
+        tag: 'Finance',
+        image: require('../assets/discover/finance.jpeg'),
+    },
+    {
+        id: 4,
+        tag: 'Education',
+        image: require('../assets/discover/education.jpg'),
+    },
+    {
+        id: 5,
+        tag: 'Gaming',
+        image: require('../assets/discover/gaming.jpg'),
+    },
+    {
+        id: 6,
+        tag: 'Food',
+        image: require('../assets/discover/food.jpg'),
     }
 ]

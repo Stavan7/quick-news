@@ -11,6 +11,7 @@ const Loading = () => {
             <Lottie
                 autoPlay
                 cacheComposition={false}
+                hardwareAccelerationAndroid={true}
                 enableMergePathsAndroidForKitKatAndAbove={true}
                 source={require('../assets/animations/loading.json')}
             />

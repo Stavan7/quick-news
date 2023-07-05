@@ -5,11 +5,12 @@ class Sports extends Component {
     render() {
         return <PageComponent
             category
-            keyword="Sports"
             paddingBtm={70}
+            keyword="Sports"
             navigation={this.props.navigation}
         />
     }
 }
+
 
 export default Sports; 

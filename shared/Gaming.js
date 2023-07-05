@@ -10,4 +10,5 @@ class Gaming extends Component {
         />
     }
 }
+
 export default Gaming; 
