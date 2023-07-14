@@ -7,8 +7,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import { DiscoverList } from '../data/data';
-import COLORS from '../constants/Colors';
+import { DiscoverList } from '../../data/data';
+import COLORS from '../../constants/Colors';
 import FastImage from 'react-native-fast-image';
 
 const Discover = ({ navigation }) => {

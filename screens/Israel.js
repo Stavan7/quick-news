@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import PageComponent from '../components/PageComponent';
+import ScreenComponent from '../components/UI/ScreenComponent';
 
 class Israel extends Component {
     render() {
-        return <PageComponent
+        return <ScreenComponent
             keyword="Israel"
             headerBtn={true}
             navigation={this.props.navigation}

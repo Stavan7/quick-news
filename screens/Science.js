@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PageComponent from '../components/PageComponent';
+import React, { Component } from 'react' 
+import ScreenComponent from '../components/UI/ScreenComponent';
 
 class Science extends Component {
     render() {
-        return <PageComponent
+        return <ScreenComponent
             category
             headerBtn={true}
             keyword="Science"

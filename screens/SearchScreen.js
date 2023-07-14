@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 import COLORS from '../constants/Colors';
 import { getGlobalNews } from '../utils/api';
-import NewsCard from '../components/NewsCard';
-import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
+import NewsCard from '../components/Cards/NewsCard';
 
 class SearchScreen extends PureComponent {
 

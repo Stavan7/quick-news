@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import PageComponent from '../components/PageComponent';
+import ScreenComponent from '../components/UI/ScreenComponent';
 
 class Gaming extends Component {
     render() {
-        return <PageComponent
+        return <ScreenComponent
             keyword="Gaming"
             headerBtn={true}
             navigation={this.props.navigation}

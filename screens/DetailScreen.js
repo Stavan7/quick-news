@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import COLORS from '../constants/Colors';
-import share from '../components/NewsShare';
+import share from '../components/UI/NewsShare';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 

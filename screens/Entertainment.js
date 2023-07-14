@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PageComponent from '../components/PageComponent';
+import React, { PureComponent } from 'react'
+import ScreenComponent from '../components/UI/ScreenComponent';
 
-class Entertainment extends Component {
+class Entertainment extends PureComponent {
     render() {
-        return <PageComponent
+        return <ScreenComponent
             paddingBtm={70}
             keyword="Entertainment"
             navigation={this.props.navigation}

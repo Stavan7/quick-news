@@ -4,14 +4,15 @@ import {
   FlatList,
   SafeAreaView
 } from 'react-native';
-import Error from './Error';
-import Header from './Header';
-import NewsCard from './NewsCard';
-import COLORS from '../constants/Colors';
-import Loading from '../components/Loading';
-import { getLocalNews, getGlobalNews } from '../utils/api';
+import Header from './Header'
+import Error from '../Lottie/Error';
+import Loading from '../Lottie/Loading';
+import NewsCard from '../Cards/NewsCard';
+import COLORS from '../../constants/Colors';
+import { getLocalNews, getGlobalNews } from '../../utils/api';
 
-class PageComponent extends Component {
+class ScreenComponent extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -54,6 +55,10 @@ class PageComponent extends Component {
 
   setErrorMessage(err) {
     this.setState({ error: err.message });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.data !== nextState.data;
   }
 
   componentDidMount() {
@@ -106,4 +111,4 @@ class PageComponent extends Component {
   }
 }
 
-export default PageComponent;
+export default ScreenComponent;

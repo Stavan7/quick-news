@@ -5,9 +5,9 @@ import {
     SectionList,
     SafeAreaView,
 } from 'react-native';
-import Discover from '../components/Discover';
-import SearchHeader from '../components/SearchHeader';
-import CategoriesCard from '../components/CategoriesCard';
+import Discover from '../components/Cards/Discover';
+import SearchHeader from '../components/UI/SearchHeader';
+import CategoriesCard from '../components/Cards/CategoriesCard';
 
 class MainScreen extends Component {
     render() {

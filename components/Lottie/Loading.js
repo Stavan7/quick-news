@@ -13,7 +13,7 @@ const Loading = () => {
                 cacheComposition={false}
                 hardwareAccelerationAndroid={true}
                 enableMergePathsAndroidForKitKatAndAbove={true}
-                source={require('../assets/animations/loading.json')}
+                source={require('../../assets/animations/loading.json')}
             />
         </View>
     )

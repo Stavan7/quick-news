@@ -7,8 +7,8 @@ import {
     SafeAreaView,
     TouchableOpacity
 } from 'react-native';
-import { Categories } from '../data/data';
-import COLORS from '../constants/Colors';
+import { Categories } from '../../data/data';
+import COLORS from '../../constants/Colors';
 import { Icon } from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
 

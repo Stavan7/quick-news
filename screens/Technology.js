@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import PageComponent from '../components/PageComponent';
+import ScreenComponent from '../components/UI/ScreenComponent';
 
 class Technology extends Component {
     render() {
-        return <PageComponent
+        return <ScreenComponent
             category
             paddingBtm={70}
             keyword="Technology"

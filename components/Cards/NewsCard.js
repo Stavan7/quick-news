@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import moment from 'moment';
-import share from './NewsShare';
+import share from '../UI/NewsShare';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const NewsCard = ({ data, navigation }) => {
@@ -24,14 +24,14 @@ const NewsCard = ({ data, navigation }) => {
       return (
         <Image
           style={styles.image}
-          source={require('../assets/discover/google-news.png')}
+          source={require('../../assets/discover/google-news.png')}
         />
       );
     } else {
       return (
         <Image
           style={styles.image}
-          source={require('../assets/discover/noImage.jpg')}
+          source={require('../../assets/discover/noImage.jpg')}
         />
       );
     }
@@ -70,12 +70,12 @@ const NewsCard = ({ data, navigation }) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
+    height: 300,
     overflow: 'hidden',
     borderRadius: 10,
     marginBottom: 20,
     marginHorizontal: 20,
   },
-
   image: {
     flex: 1,
     width: '100%',

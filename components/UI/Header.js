@@ -4,7 +4,7 @@ import {
     View,
     StyleSheet,
 } from 'react-native'
-import COLORS from '../constants/Colors';
+import COLORS from '../../constants/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Header = ({ header, BackBtn, navigation }) => {

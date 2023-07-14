@@ -6,7 +6,7 @@ import {
   Dimensions
 } from 'react-native';
 import Lottie from 'lottie-react-native';
-import COLORS from '../constants/Colors';
+import COLORS from '../../constants/Colors';
 
 const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
@@ -17,7 +17,7 @@ const Error = ({ errorText }) => {
       <Lottie
         autoPlay
         style={styles.lottie}
-        source={require('../assets/animations/error.json')}
+        source={require('../../assets/animations/error.json')}
       />
       <Text style={styles.header}>Oops!</Text>
       <Text style={styles.text}>{errorText}</Text>

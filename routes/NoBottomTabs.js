@@ -1,15 +1,15 @@
 import React from 'react';
+import Food from '../screens/Food';
+import Israel from '../screens/Israel';
+import Politics from '../screens/Politics';
+import Finance from '../screens/Finance';
+import Gaming from '../screens/Gaming'
 import Science from '../screens/Science';
 import Business from '../screens/Business';
-import Education from '../shared/Education'
+import Education from '../screens/Education';
 import DetailScreen from '../screens/DetailScreen';
-import Finance from '../shared/Finance';
-import Food from '../shared/Food';
-import Israel from '../shared/Israel';
-import Politics from '../shared/Politics';
-import Gaming from '../shared/Gaming'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchScreen from '../screens/SearchScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 const Stack = createNativeStackNavigator();
