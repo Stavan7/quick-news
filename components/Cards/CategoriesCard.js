@@ -37,7 +37,6 @@ const CategoriesCard = ({ navigation }) => {
             <TouchableOpacity activeOpacity={0.7} onPress={() => handleRouteName(index)}>
                 <View style={styles.container} >
                     <FastImage
-                        resizeMode='cover'
                         source={item.image}
                         style={styles.image}
                         priority={FastImage.priority.normal}
@@ -79,13 +78,17 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+        width: 140,
+        height: 260,
         marginTop: 10,
         marginRight: 10,
+        overflow: 'hidden',
     },
     image: {
-        width: 140,
-        height: 210,
-        borderRadius: 10
+        flex: 1,
+        width: '100%',
+        borderRadius: 10,
+        resizeMode: 'contain',
     },
     cardTitle: {
         color: 'white',

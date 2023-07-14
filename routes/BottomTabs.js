@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
                 height: 80,
             },
             android: {
-                height: 53,
+                height: 50,
             },
         }),
         backfaceVisibility: 'hidden',

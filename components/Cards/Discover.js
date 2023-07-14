@@ -38,13 +38,12 @@ const Discover = ({ navigation }) => {
       <TouchableOpacity
         key={item.id}
         activeOpacity={0.5}
-        style={{ width: '47%' }}
+        style={styles.container}
         onPress={() => handleRouteName(index)}>
         <FastImage
-          resizeMode="cover"
           source={item.image}
           style={styles.image}
-          priority={FastImage.priority.normal}
+          priority={FastImage.priority.high}
         />
         <View style={styles.tagView}>
           <Text style={styles.tag}>{item.tag}</Text>
@@ -79,17 +78,22 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
   },
   columnWrapper: {
-    justifyContent: 'space-between',
-    marginHorizontal: 20,
+    flex: 1,
     marginVertical: 10,
+    marginHorizontal: 20,
+    justifyContent: 'space-between',
+  },
+  container: {
+    width: '48%',
+    height: 210,
+    overflow: 'hidden'
   },
   image: {
     flex: 1,
     opacity: 0.5,
     width: '100%',
-    aspectRatio: 1,
     borderRadius: 10,
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
   tagView: {
     position: 'absolute',

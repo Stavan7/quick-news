@@ -24,8 +24,8 @@ const DetailScreen = ({ route, navigation }) => {
   const ImgCheck = () => {
     if (image !== null) {
       return <Image
-        source={{ uri: image }}
         style={styles.image}
+        source={{ uri: image }}
       />
     } else {
       return <Image
@@ -38,23 +38,21 @@ const DetailScreen = ({ route, navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.cardContainer}>
-        <View style={styles.imageContainer}>
-          <ImgCheck />
-          <Ionicons
-            size={25}
-            color="white"
-            name="ios-chevron-back-sharp"
-            onPress={() => navigation.goBack()}
-            style={[styles.iconContainer, { left: 20 }]}
-          />
-          <EvilIcons
-            size={28}
-            color="white"
-            name="share-apple"
-            onPress={() => share(data.url)}
-            style={[styles.iconContainer, { right: 20 }]}
-          />
-        </View>
+        <ImgCheck />
+        <Ionicons
+          size={25}
+          color="white"
+          name="ios-chevron-back-sharp"
+          onPress={() => navigation.goBack()}
+          style={[styles.iconContainer, { left: 20 }]}
+        />
+        <EvilIcons
+          size={28}
+          color="white"
+          name="share-apple"
+          onPress={() => share(data.url)}
+          style={[styles.iconContainer, { right: 20 }]}
+        />
       </View>
 
       <View style={styles.textContainer}>
@@ -76,24 +74,18 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.screenBg,
   },
   cardContainer: {
-    height: HEIGHT / 3,
-    overflow: 'hidden'
-  },
-  imageContainer: {
-    height: '100%',
+    flex: 1,
     overflow: 'hidden',
+    height: HEIGHT / 3
   },
   image: {
     flex: 1,
+    width: '100%',
     resizeMode: 'contain',
   },
   textContainer: {
     flexGrow: 1,
-    marginTop: 20,
-    padding: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor: '#222222'
+    padding: 10,
   },
   title: {
     fontSize: 16,
@@ -142,7 +134,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     position: 'absolute',
-    top: 30,
+    top: 20,
     height: 40,
     width: 40,
     borderRadius: 30,

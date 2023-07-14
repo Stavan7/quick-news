@@ -70,17 +70,16 @@ const NewsCard = ({ data, navigation }) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    height: 300,
+    height: 280,
     overflow: 'hidden',
-    borderRadius: 10,
     marginBottom: 20,
     marginHorizontal: 20,
   },
   image: {
     flex: 1,
     width: '100%',
-    aspectRatio: 16 / 9,
-    resizeMode: 'cover',
+    borderRadius: 10,
+    resizeMode: 'contain',
   },
   title: {
     fontSize: 14,
