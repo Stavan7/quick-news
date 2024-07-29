@@ -22,14 +22,14 @@ const DetailScreen = ({ route }) => {
   const image = data.urlToImage
 
   const dispatch = useDispatch()
+  console.log(data)
   const bookmarks = useSelector((state) => state.bookmark.bookmarks)
-  console.log('bookmarks :', bookmarks)
 
   const isBookmarked = bookmarks.some(item => item.title === data.title)
-  console.log('IS BOOKMARKED STATUS : ', isBookmarked)
+
   const toggleBookmark = () => {
     if (isBookmarked) {
-      dispatch(removeBookmark(data));
+      dispatch(removeBookmark(data.title));
     } else {
       dispatch(addBokmark(data));
     }

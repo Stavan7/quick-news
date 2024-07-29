@@ -5,7 +5,7 @@ import {
     StyleSheet
 } from 'react-native';
 import COLORS from '../constants/Colors';
-import Favorites from '../screens/Favorites';
+import Bookmarks from '../screens/Bookmarks';
 import MainScreen from '../screens/MainScreen';
 import SearchScreen from '../screens/SearchScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -64,7 +64,7 @@ const BottomTabs = () => {
                 component={SearchScreen}
                 options={{
                     headerTitle: 'Search News',
-                    tabBarLabel: 'Home',
+                    tabBarLabel: 'Search',
                     tabBarIcon: ({ focused }) => (
                         <>
                             <Ionicons
@@ -78,11 +78,11 @@ const BottomTabs = () => {
                 }}
             />
             <Tab.Screen
-                name="Favorites"
-                component={Favorites}
+                name="Bookmarks"
+                component={Bookmarks}
                 options={{
                     headerTitle: 'Saved News',
-                    tabBarLabel: 'Home',
+                    tabBarLabel: 'Bookmarks',
                     tabBarIcon: ({ focused }) => (
                         <>
                             <Ionicons

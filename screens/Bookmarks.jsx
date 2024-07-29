@@ -10,32 +10,34 @@ import COLORS from '../constants/Colors'
 import { useSelector } from 'react-redux'
 import NewsCard from '../components/Cards/NewsCard'
 
-const Favorites = ({ navigation }) => {
+const Bookmarks = ({ navigation }) => {
+
 	const bookmarks = useSelector((state) => state.bookmark.bookmarks)
+
+	const NullComponent = () => (
+		<>
+			<Image source={require('../assets/nulldata.png')} style={styles.image} />
+			<Text style={styles.nullText}>No news saved till now</Text>
+		</>
+	)
 	return (
 		< SafeAreaView style={styles.root} >
-			{
-				bookmarks && bookmarks.length === 0 ?
-					<>
-						<Image source={require('../assets/nulldata.png')} style={styles.image} />
-						<Text style={styles.nullText}>No news saved till now</Text>
-					</>
-					:
-					<FlatList
-						data={bookmarks}
-						progressViewOffset={100}
-						initialNumToRender={8}
-						maxToRenderPerBatch={8}
-						removeClippedSubviews={true}
-						showsVerticalScrollIndicator={false}
-						renderItem={({ item }) => <NewsCard data={item} navigation={navigation} />}
-					/>
-			}
+
+			<FlatList
+				data={bookmarks}
+				progressViewOffset={100}
+				initialNumToRender={8}
+				maxToRenderPerBatch={8}
+				removeClippedSubviews={true}
+				showsVerticalScrollIndicator={false}
+				ListEmptyComponent={<NullComponent />}
+				renderItem={({ item }) => <NewsCard data={item} navigation={navigation} />}
+			/>
 		</SafeAreaView >
 	)
 }
 
-export default Favorites
+export default Bookmarks
 
 const styles = StyleSheet.create({
 	root: {

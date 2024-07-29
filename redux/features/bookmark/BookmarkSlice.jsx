@@ -12,8 +12,7 @@ const BookmarkSlice = createSlice({
 			state.bookmarks.push(action.payload)
 		},
 		removeBookmark: (state, action) => {
-			console.log('IN REMOVE BOOKMARK', action.payload.title)
-			state.bookmarks.filter(item => item.title !== action.payload.title)
+			state.bookmarks = state.bookmarks.filter((item) => item.title !== action.payload)
 		}
 	}
 })
