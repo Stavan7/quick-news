@@ -4,22 +4,36 @@ import {
   Text,
   Image,
   Linking,
-  Dimensions,
   ScrollView,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import moment from 'moment';
 import COLORS from '../constants/Colors.jsx';
 import share from '../components/UI/NewsShare.jsx';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-const HEIGHT = Dimensions.get('screen').height;
+import { addBokmark, removeBookmark } from '../redux/features/bookmark/BookmarkSlice.jsx';
 
 const DetailScreen = ({ route }) => {
 
-  const data = route.params.data;
-  const image = data.urlToImage;
+  const data = route.params.data
+  const image = data.urlToImage
+
+  const dispatch = useDispatch()
+  const bookmarks = useSelector((state) => state.bookmark.bookmarks)
+  console.log('bookmarks :', bookmarks)
+
+  const isBookmarked = bookmarks.some(item => item.title === data.title)
+  console.log('IS BOOKMARKED STATUS : ', isBookmarked)
+  const toggleBookmark = () => {
+    if (isBookmarked) {
+      dispatch(removeBookmark(data));
+    } else {
+      dispatch(addBokmark(data));
+    }
+  }
 
   const nav = useNavigation()
   useLayoutEffect(() => {
@@ -58,12 +72,18 @@ const DetailScreen = ({ route }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.cardContainer}>
-        <ImgCheck />
-      </View>
+      <ImgCheck />
       <View style={styles.textContainer}>
         <Text style={styles.title}>{data.title}</Text>
-        <Text style={styles.time}>Published : {moment(data.publishedAt).format('LLL')}</Text>
+
+        {/* bookmark view */}
+        <View style={{ flexDirection: 'row', justifyContent: "space-between" }}>
+          <Text style={styles.time}>Published : {moment(data.publishedAt).format('LLL')}</Text>
+          <TouchableOpacity style={styles.bookmarkView} activeOpacity={0.5} onPress={toggleBookmark}>
+            <Ionicons name={isBookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={COLORS.accent} />
+          </TouchableOpacity>
+        </View>
+
         <Text style={styles.content}>{data.content ?? data.description}</Text>
         <Text style={styles.urlText}>To read full news, checkout :</Text>
         <Text style={styles.url} onPress={() => Linking.openURL(data.url)}>{data.url}</Text>
@@ -79,13 +99,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background,
   },
-  cardContainer: {
-    flex: 1,
-    height: HEIGHT / 3
-  },
   image: {
-    flex: 1,
-    height: 'auto',
+    height: 250,
     width: '100%',
     resizeMode: 'contain',
   },
@@ -148,6 +163,14 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
+  bookmarkView: {
+    height: 35,
+    width: 35,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.text
+  }
 });
 
 export default DetailScreen;

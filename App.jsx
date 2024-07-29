@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
+import { Provider } from 'react-redux';
 import AppNavigator from './routes/AppNavigator';
+import BookmarkStore from './redux/BookmarkStore';
 import SplashScreen from 'react-native-splash-screen';
-import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
 
@@ -10,9 +11,9 @@ const App = () => {
   }, [])
 
   return (
-    <NavigationContainer>
+    <Provider store={BookmarkStore}>
       <AppNavigator />
-    </NavigationContainer>
+    </Provider>
 
   )
 }
