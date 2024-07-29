@@ -20,7 +20,7 @@ const BottomTabs = () => {
     return (
         <Tab.Navigator
             initialRouteName="Home"
-            screenOptions={{
+            screenOptions={({ route }) => ({
                 tabBarShowLabel: false,
                 tabBarStyle: styles.bottomTab,
                 //header
@@ -29,6 +29,29 @@ const BottomTabs = () => {
                 headerStyle: { backgroundColor: COLORS.background },
                 headerTintColor: COLORS.primary,
                 headerTitleStyle: { ...styles.headerTitle },
+                tabBarIcon: ({ focused }) => {
+                    let iconName;
+                    switch (route.name) {
+                        case 'Home': iconName = 'home';
+                            break;
+                        case 'Search': iconName = 'search'
+                            break
+                        case 'Bookmarks': iconName = 'bookmark'
+                            break
+                        default:
+                            break;
+                    }
+                    return (
+                        <>
+                            <Feather
+                                size={23}
+                                name={iconName}
+                                color={focused ? COLORS.secondary : COLORS.text}
+                            />
+                            {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
+                        </>
+                    )
+                },
                 headerLeft: () => (
                     <Ionicons
                         size={25}
@@ -38,25 +61,15 @@ const BottomTabs = () => {
                         name="arrow-back-outline"
                     />
                 )
-            }}
+            })}
         >
             <Tab.Screen
                 name="Home"
                 component={MainScreen}
                 options={{
-                    headerLeft: () => (<Image source={require('../assets/icon.png')} style={styles.logo} />),
+                    headerLeft: () => <Image source={require('../assets/icon.png')} style={styles.logo} />,
                     tabBarLabel: 'Home',
-                    headerTitle: 'Quick News',
-                    tabBarIcon: ({ focused }) => (
-                        <>
-                            <Feather
-                                name="home"
-                                size={21}
-                                color={focused ? COLORS.secondary : COLORS.text}
-                            />
-                            {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
-                        </>
-                    )
+                    headerTitle: 'Quick News'
                 }}
             />
             <Tab.Screen
@@ -64,17 +77,7 @@ const BottomTabs = () => {
                 component={SearchScreen}
                 options={{
                     headerTitle: 'Search News',
-                    tabBarLabel: 'Search',
-                    tabBarIcon: ({ focused }) => (
-                        <>
-                            <Ionicons
-                                name="search-outline"
-                                size={23}
-                                color={focused ? COLORS.secondary : COLORS.text}
-                            />
-                            {focused ? <Text style={styles.dot}>{'\u2B24'}</Text> : null}
-                        </>
-                    )
+                    tabBarLabel: 'Search'
                 }}
             />
             <Tab.Screen
@@ -95,7 +98,7 @@ const BottomTabs = () => {
                     )
                 }}
             />
-        </Tab.Navigator>
+        </Tab.Navigator >
     )
 }
 
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     dot: {
-        color: COLORS.highlight,
+        color: COLORS.accent,
         fontSize: 5,
         marginTop: 3,
     },

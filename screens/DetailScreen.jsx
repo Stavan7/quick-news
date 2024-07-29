@@ -22,7 +22,6 @@ const DetailScreen = ({ route }) => {
   const image = data.urlToImage
 
   const dispatch = useDispatch()
-  console.log(data)
   const bookmarks = useSelector((state) => state.bookmark.bookmarks)
 
   const isBookmarked = bookmarks.some(item => item.title === data.title)
