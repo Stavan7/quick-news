@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux';
 import AppNavigator from './routes/AppNavigator';
 import BookmarkStore from './redux/BookmarkStore';
+import { PaperProvider } from 'react-native-paper';
 
 const App = () => {
   return (
     <Provider store={BookmarkStore}>
-      <AppNavigator />
+      <PaperProvider>
+        <AppNavigator />
+      </PaperProvider>
     </Provider>
 
   )

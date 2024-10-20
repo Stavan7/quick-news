@@ -22,14 +22,10 @@ const Stack = createNativeStackNavigator();
 const NoBottomTabs = () => {
     return (
         <Stack.Navigator screenOptions={{
+            headerTitleAlign: 'left',
             headerShadowVisible: true,
-            headerStyle: {
-                backgroundColor: COLORS.highlight,
-                borderBottomLeftRadius: 10,
-                borderBottomRightRadius: 10,
-            },
             headerTintColor: COLORS.primary,
-            headerTitleAlign: "center",
+            headerStyle: { backgroundColor: COLORS.white },
             headerTitleStyle: {
                 fontSize: 18,
                 fontFamily: 'NotoSans-Bold',

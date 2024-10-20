@@ -85,7 +85,7 @@ const DetailScreen = ({ route }) => {
 
         <Text style={styles.content}>{data.content ?? data.description}</Text>
         <Text style={styles.urlText}>To read full news, checkout :</Text>
-        <Text style={styles.url} onPress={() => Linking.openURL(data.url)}>{data.url}</Text>
+        <Text style={styles.url} numberOfLines={2} onPress={() => Linking.openURL(data.url)}>{data.url}</Text>
         <Text style={styles.authorText}>Author: {data.author ?? 'Not Available'}</Text>
         <Text style={styles.source}>Source: {data.source.name ?? 'Not Available'}</Text>
       </View>
@@ -99,9 +99,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
   },
   image: {
-    height: 250,
-    width: '100%',
-    resizeMode: 'contain',
+    height: 210,
+    width: '95%',
+    borderRadius: 8,
+    marginVertical: 10,
+    alignSelf: 'center',
+    resizeMode: 'cover',
   },
   textContainer: {
     flexGrow: 1,
@@ -109,14 +112,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    color: COLORS.primary,
+    marginBottom: 10,
+    color: COLORS.text,
     fontFamily: 'Poppins-SemiBold',
   },
   time: {
     fontSize: 14,
     marginTop: 10,
     color: COLORS.secondary,
-    fontFamily: 'NotoSans-SemiBold',
+    fontFamily: 'NotoSans-Medium',
   },
   content: {
     fontSize: 14,
@@ -144,13 +148,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 10,
     color: COLORS.text,
-    fontFamily: 'NotoSans-Regular',
+    fontFamily: 'NotoSans-Medium',
   },
   source: {
     fontSize: 14,
     marginTop: 5,
     color: COLORS.text,
-    fontFamily: 'NotoSans-Regular',
+    fontFamily: 'NotoSans-Medium',
   },
   iconContainer: {
     position: 'absolute',

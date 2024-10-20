@@ -23,10 +23,12 @@ const NewsCard = ({ data, navigation }) => {
       );
     } else if (data.source.name === 'Google News') {
       return (
-        <Image
-          style={styles.image}
-          source={require('../../assets/discover/google-news.png')}
-        />
+        <View style={styles.imgView}>
+          <Image
+            style={{ resizeMode: 'contain' }}
+            source={require('../../assets/discover/google-news.png')}
+          />
+        </View>
       );
     } else {
       return (
@@ -47,23 +49,22 @@ const NewsCard = ({ data, navigation }) => {
           params: { data }
         })
       }
+      style={styles.cardContainer}
     >
-      <View style={styles.cardContainer}>
-        <ImgCheck />
-        <Text style={styles.title} numberOfLines={1}>{data.title}</Text>
-        <View style={styles.bottomContainer}>
-          <View flexDirection="row">
-            <Text style={styles.source}>Source: {data.source.name ?? 'Not Available'}</Text>
-            <Text style={styles.time}>{moment(data.publishedAt).format('LT')}</Text>
-          </View>
-          <EvilIcons
-            name="share-google"
-            size={28}
-            color="white"
-            onPress={() => share(data.url)}
-            style={{ marginRight: 15 }}
-          />
+      <ImgCheck />
+      <Text style={styles.title} numberOfLines={1}>{data.title}</Text>
+      <View style={styles.bottomContainer}>
+        <View flexDirection="row">
+          <Text style={styles.source}>Source: {data.source.name ?? 'Not Available'}</Text>
+          <Text style={[styles.source, { color: COLORS.accent }]}>{moment(data.publishedAt).format('LT')}</Text>
         </View>
+        <EvilIcons
+          name="share-google"
+          size={25}
+          color="black"
+          onPress={() => share(data.url)}
+          style={{ marginRight: 15 }}
+        />
       </View>
     </TouchableOpacity>
   );
@@ -72,39 +73,38 @@ const NewsCard = ({ data, navigation }) => {
 const styles = StyleSheet.create({
   cardContainer: {
     height: 280,
-    overflow: 'hidden',
-    marginBottom: 20,
-    marginHorizontal: 20,
+    marginHorizontal: 16,
   },
   image: {
-    flex: 1,
+    height: 200,
     width: '100%',
-    borderRadius: 10,
-    resizeMode: 'contain',
+    borderRadius: 8,
+    resizeMode: 'cover',
   },
   title: {
     fontSize: 14,
     margin: 10,
-    color: COLORS.primary,
+    color: COLORS.text,
     fontFamily: 'Poppins-Medium',
   },
   bottomContainer: {
-    marginTop: 5,
     flexDirection: 'row',
     marginHorizontal: 10,
     justifyContent: 'space-between',
   },
   source: {
-    fontSize: 13,
+    fontSize: 12,
+    marginRight: 10,
     color: COLORS.secondary,
     fontFamily: 'Poppins-Regular',
   },
-  time: {
-    fontSize: 13,
-    marginLeft: 10,
-    color: COLORS.accent,
-    fontFamily: 'Poppins-Regular',
-  },
+  //google news
+  imgView: {
+    height: 200,
+    borderRadius: 8,
+    alignItems: 'center',
+    backgroundColor: COLORS.white
+  }
 });
 
 export default NewsCard;

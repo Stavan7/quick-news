@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	Text,
+	View,
 	Image,
 	FlatList,
 	StyleSheet,
@@ -15,14 +16,13 @@ const Bookmarks = ({ navigation }) => {
 	const bookmarks = useSelector((state) => state.bookmark.bookmarks)
 
 	const NullComponent = () => (
-		<>
-			<Image source={require('../assets/nulldata.png')} style={styles.image} />
+		<View style={styles.nullView}>
+			<Image source={require('../assets/nulldata.png')} resizeMode='contain' />
 			<Text style={styles.nullText}>No news saved till now</Text>
-		</>
+		</View>
 	)
 	return (
-		< SafeAreaView style={styles.root} >
-
+		<SafeAreaView style={styles.root}>
 			<FlatList
 				data={bookmarks}
 				progressViewOffset={100}
@@ -42,19 +42,18 @@ export default Bookmarks
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
+		paddingTop: 10,
 		backgroundColor: COLORS.background
 	},
-	image: {
-		marginTop: 50,
-		height: 300,
-		width: 300,
-		alignSelf: 'center',
-		resizeMode: 'contain'
+	nullView: {
+		flex: 1,
+		marginTop: 20,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	nullText: {
 		fontSize: 16,
 		color: COLORS.text,
-		textAlign: 'center',
 		fontFamily: 'Poppins-SemiBold'
 	}
 })

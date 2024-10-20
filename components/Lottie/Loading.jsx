@@ -1,22 +1,12 @@
 import React from 'react'
 import {
-    View,
     StyleSheet,
+    ActivityIndicator,
 } from 'react-native';
-import Lottie from 'lottie-react-native';
+import COLORS from '../../constants/Colors';
 
 const Loading = () => {
-    return (
-        <View style={styles.container}>
-            <Lottie
-                autoPlay
-                cacheComposition={false}
-                hardwareAccelerationAndroid={true}
-                enableMergePathsAndroidForKitKatAndAbove={true}
-                source={require('../../assets/animations/loading.json')}
-            />
-        </View>
-    )
+    return <ActivityIndicator size='large' color={COLORS.text} style={styles.container} />
 }
 
 const styles = StyleSheet.create({
@@ -27,4 +17,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Loading; 
+export default Loading;

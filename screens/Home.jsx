@@ -1,8 +1,5 @@
 import React from 'react'
 import {
-    Text,
-    StatusBar,
-    StyleSheet,
     SectionList,
     SafeAreaView,
 } from 'react-native';
@@ -10,10 +7,9 @@ import COLORS from '../constants/Colors';
 import Discover from '../components/Cards/Discover';
 import CategoriesCard from '../components/Cards/CategoriesCard';
 
-const MainScreen = ({ navigation }) => {
+const Home = ({ navigation }) => {
     return (
-        <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor={'black'} />
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.background }}>
             <SectionList
                 sections={[
                     { type: "CATEGORIES_CARD", data: [{}] },
@@ -33,19 +29,4 @@ const MainScreen = ({ navigation }) => {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.background
-    },
-    header: {
-        fontSize: 21,
-        marginVertical: 20,
-        marginLeft: 20,
-        letterSpacing: 0.5,
-        color: COLORS.primary,
-        fontFamily: 'Poppins-Bold'
-    }
-})
-
-export default MainScreen; 
+export default Home; 

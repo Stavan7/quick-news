@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import COLORS from '../constants/Colors';
 import Bookmarks from '../screens/Bookmarks';
-import MainScreen from '../screens/MainScreen';
+import MainScreen from '../screens/Home';
 import SearchScreen from '../screens/SearchScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather'
@@ -22,11 +22,10 @@ const BottomTabs = () => {
             initialRouteName="Home"
             screenOptions={({ route }) => ({
                 tabBarShowLabel: false,
-                tabBarStyle: styles.bottomTab,
                 //header
                 headerShadowVisible: true,
                 headerTitleAlign: "left",
-                headerStyle: { backgroundColor: COLORS.background },
+                headerStyle: { backgroundColor: COLORS.white },
                 headerTintColor: COLORS.primary,
                 headerTitleStyle: { ...styles.headerTitle },
                 tabBarIcon: ({ focused }) => {
@@ -104,25 +103,8 @@ const BottomTabs = () => {
 
 const styles = StyleSheet.create({
     headerTitle: {
-        fontSize: 21,
-        letterSpacing: 0.3,
-        color: COLORS.primary,
+        fontSize: 18,
         fontFamily: 'Poppins-Bold'
-    },
-    bottomTab: {
-        marginHorizontal: 10,
-        marginBottom: 10,
-        borderRadius: 10,
-        borderTopWidth: 0,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-
-        elevation: 3,
     },
     dot: {
         color: COLORS.accent,
@@ -134,10 +116,10 @@ const styles = StyleSheet.create({
         width: 23,
     },
     logo: {
-        height: 48,
-        width: 48,
-        marginLeft: 10,
-        resizeMode: 'contain',
+        height: 41,
+        width: 41,
+        marginLeft: 15,
+        resizeMode: 'cover',
     }
 })
 

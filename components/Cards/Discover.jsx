@@ -45,15 +45,13 @@ const Discover = ({ navigation }) => {
           style={styles.image}
           priority={FastImage.priority.high}
         />
-        <View style={styles.tagView}>
-          <Text style={styles.tag}>{item.tag}</Text>
-        </View>
+        <Text style={styles.tag}>{item.tag}</Text>
       </TouchableOpacity>
     );
   };
 
   return (
-    <SafeAreaView>
+    <View style={{ flex: 1, marginLeft: 16 }}>
       <Text style={styles.header}>Discover</Text>
       <FlatList
         numColumns={2}
@@ -65,46 +63,40 @@ const Discover = ({ navigation }) => {
         columnWrapperStyle={styles.columnWrapper}
         renderItem={({ item }) => <Card item={item} index={item.id} />}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 18,
+    fontSize: 16,
     marginTop: 25,
-    marginHorizontal: 20,
-    color: COLORS.secondary,
+    color: COLORS.primary,
     fontFamily: 'Poppins-SemiBold',
   },
   columnWrapper: {
-    flex: 1,
-    marginVertical: 10,
-    marginHorizontal: 20,
+    marginRight: 16,
+    marginVertical: 5,
     justifyContent: 'space-between',
   },
   container: {
     width: '48%',
     height: 210,
-    overflow: 'hidden'
+    borderRadius: 8,
+    backgroundColor: COLORS.white
   },
   image: {
-    flex: 1,
-    opacity: 0.8,
+    height: '80%',
     width: '100%',
-    borderRadius: 10,
+    borderRadius: 8,
     resizeMode: 'contain',
   },
-  tagView: {
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...StyleSheet.absoluteFillObject,
-  },
   tag: {
-    fontSize: 20,
+    fontSize: 14,
+    marginTop: 5,
+    marginLeft: 10,
     color: COLORS.text,
-    fontFamily: 'NotoSans-ExtraBold',
+    fontFamily: 'NotoSans-Medium',
   },
 });
 

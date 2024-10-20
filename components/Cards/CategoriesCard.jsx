@@ -4,7 +4,6 @@ import {
     View,
     FlatList,
     StyleSheet,
-    SafeAreaView,
     TouchableOpacity
 } from 'react-native';
 import { Categories } from '../../data/data';
@@ -46,30 +45,28 @@ const CategoriesCard = ({ navigation }) => {
 
     const Card = ({ item, index }) => {
         return (
-            <TouchableOpacity activeOpacity={0.7} onPress={() => handleRouteName(index)}>
-                <View style={styles.container} >
-                    <FastImage
-                        source={item.image}
-                        style={styles.image}
-                        priority={FastImage.priority.normal}
+            <TouchableOpacity activeOpacity={0.7} onPress={() => handleRouteName(index)} style={styles.container}>
+                <FastImage
+                    source={item.image}
+                    style={styles.image}
+                    priority={FastImage.priority.high}
+                />
+                <Text style={styles.cardTitle}>{item.subTitle}</Text>
+                <View style={styles.btmContainer}>
+                    <Icon
+                        size={16}
+                        type={item.type}
+                        name={item.icon}
+                        color={COLORS.accent}
                     />
-                    <Text style={styles.cardTitle}>{item.subTitle}</Text>
-                    <View style={styles.btmContainer}>
-                        <Icon
-                            size={16}
-                            type={item.type}
-                            name={item.icon}
-                            color={COLORS.accent}
-                        />
-                        <Text style={styles.tag}>{item.tag}</Text>
-                    </View>
+                    <Text style={styles.tag}>{item.tag}</Text>
                 </View>
             </TouchableOpacity>
         )
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, marginLeft: 20 }}>
+        <View style={{ flex: 1, marginLeft: 16 }}>
             <Text style={styles.header}>Top Headlines</Text>
             <FlatList
                 horizontal={true}
@@ -78,36 +75,36 @@ const CategoriesCard = ({ navigation }) => {
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => <Card item={item} index={item.id} />}
             />
-        </SafeAreaView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
-        fontSize: 18,
+        fontSize: 16,
         marginTop: 10,
-        color: COLORS.secondary,
+        color: COLORS.primary,
         fontFamily: 'Poppins-SemiBold',
     },
     container: {
-        flex: 1,
         width: 140,
-        height: 260,
+        height: 200,
         marginTop: 10,
-        marginRight: 10,
-        overflow: 'hidden',
+        marginRight: 12,
+        borderRadius: 8,
+        backgroundColor: COLORS.white
     },
     image: {
-        flex: 1,
+        height: '70%',
         width: '100%',
-        borderRadius: 10,
+        borderRadius: 8,
         resizeMode: 'contain',
     },
     cardTitle: {
-        color: COLORS.secondary,
-        fontSize: 12.6,
+        fontSize: 12,
         marginTop: 5,
         marginLeft: 5,
+        color: COLORS.text,
         fontFamily: 'Poppins-Regular'
     },
     btmContainer: {
@@ -117,9 +114,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     tag: {
-        fontSize: 12,
+        fontSize: 10,
         marginLeft: 8,
-        color: COLORS.secondary,
+        color: COLORS.text,
         fontFamily: 'Poppins-Regular'
     }
 })
